@@ -1,0 +1,46 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}ଲଗଇନ୍ - ମୋ ଫକୀର ମୋହନ{% endblock %}
+
+{% block content %}
+<section class="section">
+    <div class="auth-container">
+        <div class="auth-card">
+            <h2 class="auth-title">ଲଗଇନ୍</h2>
+            <p class="auth-subtitle">ଆପଣଙ୍କ ଆକାଉଣ୍ଟରେ ପ୍ରବେଶ କରନ୍ତୁ</p>
+
+            <form method="post" class="auth-form">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                    <div class="form-errors">
+                        {% for error in field.errors %}
+                        <span class="error">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+
+                {% if form.non_field_errors %}
+                <div class="form-errors">
+                    {% for error in form.non_field_errors %}
+                    <span class="error">{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <button type="submit" class="btn btn-primary btn-block">ଲଗଇନ୍</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>ଆକାଉଣ୍ଟ ନାହିଁ? <a href="{% url 'register' %}">ଏଠାରେ ପଞ୍ଜୀକରଣ କରନ୍ତୁ</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

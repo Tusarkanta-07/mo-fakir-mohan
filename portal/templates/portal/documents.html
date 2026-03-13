@@ -1,0 +1,62 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}ଦଲିଲ - ମୋ ଫକୀର ମୋହନ{% endblock %}
+
+{% block content %}
+<section class="section">
+    <h2 class="section-title">ଡାଉନଲୋଡ୍ ଦଲିଲ</h2>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto 30px; font-size: 1.1rem;">
+        ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ବିଷୟରେ ବିଭିନ୍ନ ଦଲିଲ ଏବଂ ଗବେଷଣା ପତ୍ର ଡାଉନଲୋଡ୍ କରନ୍ତୁ |
+        <strong>ଦ୍ରଷ୍ଟବ୍ୟ:</strong> ଦଲିଲ ଡାଉନଲୋଡ୍ କରିବା ପାଇଁ ଲଗଇନ୍ ଆବଶ୍ୟକ |
+    </p>
+
+    {% if categories %}
+    <div style="text-align: center; margin-bottom: 30px;">
+        <a href="{% url 'documents' %}" class="btn" style="margin: 5px;">ସମସ୍ତ</a>
+        {% for cat in categories %}
+        <a href="?category={{ cat.id }}" class="btn" style="margin: 5px;">{{ cat.name_odia }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if documents %}
+    <ul class="document-list">
+        {% for doc in documents %}
+        <li class="document-item">
+            <div class="document-info">
+                <h4>{{ doc.title_odia }}</h4>
+                {% if doc.description_odia %}
+                <p class="document-meta">{{ doc.description_odia }}</p>
+                {% endif %}
+                <p class="document-meta">
+                    ପ୍ରକାର: {{ doc.file_type }} | 
+                    ଡାଉନଲୋଡ: {{ doc.download_count }} | 
+                    ଅପଲୋଡ: {{ doc.uploaded_at|date:"d M Y" }}
+                </p>
+            </div>
+            {% if user.is_authenticated %}
+                <a href="{% url 'download_document' doc.pk %}" class="btn">ଡାଉନଲୋଡ୍</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn">ଲଗଇନ୍ କରି ଡାଉନଲୋଡ୍ କରନ୍ତୁ</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <div class="card" style="padding: 40px; text-align: center;">
+        <p style="font-size: 1.1rem;">ବର୍ତ୍ତମାନ କୌଣସି ଦଲିଲ ଉପଲବ୍ଧ ନାହିଁ |</p>
+    </div>
+    {% endif %}
+</section>
+
+{% if not user.is_authenticated %}
+<section class="section">
+    <div class="alert alert-info" style="text-align: center;">
+        <h3 style="margin-bottom: 15px;">ଦଲିଲ ଡାଉନଲୋଡ୍ କରିବା ପାଇଁ ଲଗଇନ୍ ଆବଶ୍ୟକ</h3>
+        <p style="margin-bottom: 20px;">ଅନୁଗ୍ରହ କରି ଲଗଇନ୍ କରନ୍ତୁ କିମ୍ବା ନୂତନ ଖାତା ସୃଷ୍ଟି କରନ୍ତୁ</p>
+        <a href="{% url 'login' %}" class="btn">ଲଗଇନ୍</a>
+        <a href="{% url 'register' %}" class="btn" style="margin-left: 10px;">ପଞ୍ଜୀକରଣ</a>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

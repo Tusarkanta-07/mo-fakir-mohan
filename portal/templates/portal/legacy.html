@@ -1,0 +1,99 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}ଐତିହ୍ୟ - ମୋ ଫକୀର ମୋହନ{% endblock %}
+
+{% block content %}
+<section class="section">
+    <h2 class="section-title">ଫକୀର ମୋହନଙ୍କ ଐତିହ୍ୟ</h2>
+    <p style="text-align: center; max-width: 900px; margin: 0 auto 40px; font-size: 1.1rem; line-height: 1.8;">
+        ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଅବଦାନ କେବଳ ସାହିତ୍ୟ ମଧ୍ୟରେ ସୀମିତ ନୁହେଁ | 
+        ସେ ଜଣେ ସମାଜ ସଂସ୍କାରକ ଭାବରେ ମଧ୍ୟ ପରିଚିତ ଥିଲେ | ତାଙ୍କ ଚିନ୍ତାଧାରା ଏବଂ 
+        ଲେଖନୀ ଓଡ଼ିଆ ସମାଜକୁ ଏକ ନୂତନ ଦିଗ ଦେଇଥିଲା |
+    </p>
+</section>
+
+{% if articles %}
+<section class="section">
+    <h2 class="section-title">ଐତିହ୍ୟ ବିଷୟରେ ପ୍ରବନ୍ଧ</h2>
+    <div class="card-grid">
+        {% for article in articles %}
+        <div class="card">
+            {% if article.image %}
+                <img src="{{ article.image.url }}" alt="{{ article.title_odia }}" class="card-image">
+            {% endif %}
+            <div class="card-content">
+                <h3 class="card-title">{{ article.title_odia }}</h3>
+                <p class="card-text">{{ article.content_odia|truncatewords:35 }}</p>
+                <a href="{% url 'article_detail' article.slug %}" class="btn">ପଢ଼ନ୍ତୁ</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<section class="section">
+    <h2 class="section-title">ସମାଜ ସଂସ୍କାର</h2>
+    <div class="card-grid">
+        <div class="card" style="padding: 25px;">
+            <h4 style="color: var(--primary-color); margin-bottom: 15px;">ନାରୀ ଶିକ୍ଷା</h4>
+            <p style="line-height: 1.8;">
+                ଫକୀର ମୋହନ ନାରୀ ଶିକ୍ଷାର ପ୍ରବଳ ସମର୍ଥକ ଥିଲେ | ସେ ତାଙ୍କ ଲେଖା ମାଧ୍ୟମରେ 
+                ନାରୀ ଶିକ୍ଷା ଓ ସଶକ୍ତିକରଣ ପାଇଁ ଆହ୍ୱାନ ଦେଇଥିଲେ |
+            </p>
+        </div>
+        <div class="card" style="padding: 25px;">
+            <h4 style="color: var(--primary-color); margin-bottom: 15px;">କୁସଂସ୍କାର ବିରୋଧ</h4>
+            <p style="line-height: 1.8;">
+                ସେ ସମାଜର କୁସଂସ୍କାର, ଅନ୍ଧବିଶ୍ୱାସ ଏବଂ କୁପ୍ରଥା ବିରୁଦ୍ଧରେ ଲେଖନୀ ଚାଳନା କରିଥିଲେ | 
+                ତାଙ୍କ ଲେଖା ଲୋକଙ୍କୁ ସଚେତନ କରିଥିଲା |
+            </p>
+        </div>
+        <div class="card" style="padding: 25px;">
+            <h4 style="color: var(--primary-color); margin-bottom: 15px;">ଭାଷା ଆନ୍ଦୋଳନ</h4>
+            <p style="line-height: 1.8;">
+                ଓଡ଼ିଆ ଭାଷା ଏବଂ ସାହିତ୍ୟର ବିକାଶ ପାଇଁ ଫକୀର ମୋହନ ଅନେକ ଆନ୍ଦୋଳନରେ 
+                ସକ୍ରିୟ ଭୂମିକା ଗ୍ରହଣ କରିଥିଲେ |
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">ପ୍ରଭାବ</h2>
+    <div style="max-width: 900px; margin: 0 auto; padding: 30px; background: var(--white); border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
+        <p style="line-height: 1.8; font-size: 1.1rem; margin-bottom: 20px;">
+            ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ସାହିତ୍ୟିକ ଅବଦାନ ପରବର୍ତ୍ତୀ ପିଢ଼ିର ଲେଖକମାନଙ୍କୁ ଗଭୀର ଭାବରେ ପ୍ରଭାବିତ କରିଥିଲା | 
+            ଗୋପୀନାଥ ମହାନ୍ତି, କାଳିନ୍ଦୀ ଚରଣ ପାଣିଗ୍ରାହୀ, ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଆଦର୍ଶରେ ଅନୁପ୍ରାଣିତ ହୋଇ 
+            ଓଡ଼ିଆ ସାହିତ୍ୟକୁ ସମୃଦ୍ଧ କରିଥିଲେ |
+        </p>
+        <p style="line-height: 1.8; font-size: 1.1rem; margin-bottom: 20px;">
+            ତାଙ୍କ ରଚନାବଳୀ ଆଜି ମଧ୍ୟ ଓଡ଼ିଆ ସାହିତ୍ୟ ପ୍ରେମୀମାନଙ୍କ ପାଇଁ ପ୍ରେରଣାର ଉତ୍ସ | 
+            ଓଡ଼ିଶାର ବିଭିନ୍ନ ଶିକ୍ଷାନୁଷ୍ଠାନରେ ତାଙ୍କ ରଚନା ପାଠ୍ୟକ୍ରମରେ ଅନ୍ତର୍ଭୁକ୍ତ |
+        </p>
+        <p style="line-height: 1.8; font-size: 1.1rem;">
+            ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଜୟନ୍ତୀ ପ୍ରତି ବର୍ଷ ଓଡ଼ିଶାରେ ଉତ୍ସାହର ସହ ପାଳିତ ହୁଏ | 
+            ଏହି ଦିବସରେ ବିଭିନ୍ନ ସାହିତ୍ୟିକ କାର୍ଯ୍ୟକ୍ରମ ଆୟୋଜିତ ହୋଇଥାଏ |
+        </p>
+    </div>
+</section>
+
+{% if gallery %}
+<section class="section">
+    <h2 class="section-title">ଚିତ୍ରଶାଳା</h2>
+    <div class="gallery-grid">
+        {% for image in gallery %}
+        <div class="gallery-item">
+            <img src="{{ image.image.url }}" alt="{{ image.title_odia }}">
+            {% if image.description_odia %}
+            <div class="gallery-caption">{{ image.title_odia }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-center mt-20">
+        <a href="{% url 'gallery' %}" class="btn">ସମସ୍ତ ଛବି ଦେଖନ୍ତୁ</a>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

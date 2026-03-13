@@ -1,0 +1,92 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="hero" style="background-image: linear-gradient(rgba(26, 95, 122, 0.85), rgba(21, 152, 149, 0.85)), url('/books/fakir-mohan-senapati.jpg'); background-size: cover; background-position: center;">
+    <div class="hero-content">
+        <img src="/books/fakir-mohan-senapati.jpg" alt="ଫକୀର ମୋହନ ସେନାପତି" class="hero-image">
+        <h2>ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଡିଜିଟାଲ୍ ଐତିହ୍ୟ ପୋର୍ଟାଲକୁ ସ୍ୱାଗତ</h2>
+        <p>ଓଡ଼ିଆ ସାହିତ୍ୟର ଜନକ ଏବଂ ବିଶିଷ୍ଟ ସାହିତ୍ୟିକ ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଜୀବନ, ରଚନା ଏବଂ ଐତିହ୍ୟ ବିଷୟରେ ଜାଣନ୍ତୁ</p>
+        <a href="{% url 'about' %}" class="btn">ଅଧିକ ଜାଣନ୍ତୁ</a>
+    </div>
+</section>
+
+{% if featured_articles %}
+<section class="section">
+    <h2 class="section-title">ପ୍ରମୁଖ ପ୍ରବନ୍ଧ</h2>
+    <div class="card-grid">
+        {% for article in featured_articles %}
+        <div class="card">
+            {% if article.image %}
+                <img src="{{ article.image.url }}" alt="{{ article.title_odia }}" class="card-image">
+            {% endif %}
+            <div class="card-content">
+                <h3 class="card-title">{{ article.title_odia }}</h3>
+                <p class="card-text">{{ article.content_odia|truncatewords:30 }}</p>
+                <a href="{% url 'article_detail' article.slug %}" class="btn">ପଢ଼ନ୍ତୁ</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<section class="section">
+    <h2 class="section-title">ଫକୀର ମୋହନ ସେନାପତି</h2>
+    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <p style="font-size: 1.1rem; line-height: 1.8;">
+            ଫକୀର ମୋହନ ସେନାପତି (୧୮୪୩-୧୯୧୮) ଜଣେ ବିଶିଷ୍ଟ ଓଡ଼ିଆ ଲେଖକ, ଦାର୍ଶନିକ ଏବଂ ସମାଜ ସଂସ୍କାରକ ଥିଲେ | 
+            ତାଙ୍କୁ "ଓଡ଼ିଆ ସାହିତ୍ୟର ଜନକ" ଭାବରେ ମଧ୍ୟ ଅଭିହିତ କରାଯାଏ | ତାଙ୍କ ରଚିତ "ଛମାଣ ଆଠଗୁଣ୍ଠ" 
+            ଓଡ଼ିଆ ସାହିତ୍ୟର ପ୍ରଥମ ଉପନ୍ୟାସ ଭାବରେ ପରିଗଣିତ | ତାଙ୍କ ସାହିତ୍ୟ ମାଧ୍ୟମରେ ସେ ସମାଜର ବିଭିନ୍ନ 
+            ସମସ୍ୟା, କୁସଂସ୍କାର ଏବଂ ଅନ୍ଧବିଶ୍ୱାସ ବିରୁଦ୍ଧରେ ଲେଖନୀ ଚାଳନା କରିଥିଲେ |
+        </p>
+        <a href="{% url 'about' %}" class="btn mt-20">ଜୀବନୀ ପଢ଼ନ୍ତୁ</a>
+    </div>
+</section>
+
+{% if recent_documents %}
+<section class="section">
+    <h2 class="section-title">ସାମ୍ପ୍ରତିକ ଦଲିଲ</h2>
+    <ul class="document-list">
+        {% for doc in recent_documents %}
+        <li class="document-item">
+            <div class="document-info">
+                <h4>{{ doc.title_odia }}</h4>
+                {% if doc.description_odia %}
+                <p class="document-meta">{{ doc.description_odia|truncatewords:15 }}</p>
+                {% endif %}
+                <p class="document-meta">ଡାଉନଲୋଡ: {{ doc.download_count }}</p>
+            </div>
+            {% if user.is_authenticated %}
+                <a href="{% url 'download_document' doc.pk %}" class="btn">ଡାଉନଲୋଡ୍</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn">ଲଗଇନ୍ କରି ଡାଉନଲୋଡ୍ କରନ୍ତୁ</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="text-center mt-20">
+        <a href="{% url 'documents' %}" class="btn">ସମସ୍ତ ଦଲିଲ ଦେଖନ୍ତୁ</a>
+    </div>
+</section>
+{% endif %}
+
+{% if gallery_images %}
+<section class="section">
+    <h2 class="section-title">ଚିତ୍ରଶାଳା</h2>
+    <div class="gallery-grid">
+        {% for image in gallery_images %}
+        <div class="gallery-item">
+            <img src="{{ image.image.url }}" alt="{{ image.title_odia }}">
+            {% if image.description_odia %}
+            <div class="gallery-caption">{{ image.title_odia }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-center mt-20">
+        <a href="{% url 'gallery' %}" class="btn">ସମସ୍ତ ଛବି ଦେଖନ୍ତୁ</a>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

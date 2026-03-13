@@ -1,0 +1,71 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}ରଚନାବଳୀ - ମୋ ଫକୀର ମୋହନ{% endblock %}
+
+{% block content %}
+<section class="section">
+    <h2 class="section-title">ଫକୀର ମୋହନଙ୍କ ରଚନାବଳୀ</h2>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem;">
+        ଫକୀର ମୋହନ ସେନାପତି ଓଡ଼ିଆ ସାହିତ୍ୟର ବିଭିନ୍ନ ବିଧାରେ ଅବଦାନ ରଖିଥିଲେ | 
+        ତାଙ୍କ ରଚନାବଳୀ ମଧ୍ୟରେ ଉପନ୍ୟାସ, କ୍ଷୁଦ୍ର ଗଳ୍ପ, କବିତା, ଆତ୍ମଜୀବନୀ ଏବଂ ଅନୁବାଦ ଅନ୍ତର୍ଭୁକ୍ତ |
+    </p>
+
+    <div class="card-grid">
+        {% for article in articles %}
+        <div class="card">
+            {% if article.image %}
+                <img src="{{ article.image.url }}" alt="{{ article.title_odia }}" class="card-image">
+            {% endif %}
+            <div class="card-content">
+                <h3 class="card-title">{{ article.title_odia }}</h3>
+                <p class="card-text">{{ article.content_odia|truncatewords:40 }}</p>
+                <a href="{% url 'article_detail' article.slug %}" class="btn">ଅଧିକ ପଢ଼ନ୍ତୁ</a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="card" style="padding: 30px; text-align: center;">
+            <p>ବର୍ତ୍ତମାନ କୌଣସି ରଚନାବଳୀ ଉପଲବ୍ଧ ନାହିଁ |</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">ପ୍ରମୁଖ ରଚନା</h2>
+    <div style="max-width: 900px; margin: 0 auto;">
+        <div class="card" style="padding: 25px; margin-bottom: 20px;">
+            <h3 style="color: var(--primary-color); margin-bottom: 15px;">ଛମାଣ ଆଠଗୁଣ୍ଠ</h3>
+            <p style="line-height: 1.8;">
+                ଏହା ଓଡ଼ିଆ ସାହିତ୍ୟର ପ୍ରଥମ ଉପନ୍ୟାସ | ଏହି ଗ୍ରନ୍ଥରେ ଫକୀର ମୋହନ ସେନାପତି 
+                ସେତେବେଳର ସମାଜ ବ୍ୟବସ୍ଥା, ଜମିଦାରୀ ପ୍ରଥା ଏବଂ ଚାଷୀମାନଙ୍କ ଦୁର୍ଦ୍ଦଶାକୁ 
+                ଅତି ସୁନ୍ଦର ଭାବରେ ଚିତ୍ରିତ କରିଛନ୍ତି |
+            </p>
+        </div>
+
+        <div class="card" style="padding: 25px; margin-bottom: 20px;">
+            <h3 style="color: var(--primary-color); margin-bottom: 15px;">ମାମୁଁ</h3>
+            <p style="line-height: 1.8;">
+                ଏହା ଫକୀର ମୋହନଙ୍କ ରଚିତ ଏକ ବିଶିଷ୍ଟ ଉପନ୍ୟାସ | ଏଥିରେ ସେ ସମାଜର 
+                ବିଭିନ୍ନ ସମସ୍ୟା ଏବଂ କୁସଂସ୍କାରକୁ ଉପସ୍ଥାପନ କରିଛନ୍ତି |
+            </p>
+        </div>
+
+        <div class="card" style="padding: 25px; margin-bottom: 20px;">
+            <h3 style="color: var(--primary-color); margin-bottom: 15px;">ଆତ୍ମଜୀବନୀ</h3>
+            <p style="line-height: 1.8;">
+                ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଆତ୍ମଜୀବନୀ ତାଙ୍କ ଜୀବନର ବିଭିନ୍ନ ଘଟଣା ଏବଂ 
+                ଅଭିଜ୍ଞତାକୁ ବର୍ଣ୍ଣନା କରେ | ଏହା ଓଡ଼ିଆ ସାହିତ୍ୟରେ ଏକ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ସ୍ଥାନ ଅଧିକାର କରିଛି |
+            </p>
+        </div>
+
+        <div class="card" style="padding: 25px; margin-bottom: 20px;">
+            <h3 style="color: var(--primary-color); margin-bottom: 15px;">କ୍ଷୁଦ୍ର ଗଳ୍ପ ସମଗ୍ର</h3>
+            <p style="line-height: 1.8;">
+                ଫକୀର ମୋହନ ଓଡ଼ିଆରେ କ୍ଷୁଦ୍ର ଗଳ୍ପ ବିଧାର ପ୍ରବର୍ତ୍ତନ କରିଥିଲେ | 
+                ତାଙ୍କ ରଚିତ ଅନେକ ଗୁଡ଼ିଏ କ୍ଷୁଦ୍ର ଗଳ୍ପ ମଧ୍ୟରେ "ଧୋବୀ", "ସୁବୋଧ ବାଳକ", 
+                "ଅଦେଖା ଚିଠି" ଇତ୍ୟାଦି ଅନ୍ୟତମ |
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

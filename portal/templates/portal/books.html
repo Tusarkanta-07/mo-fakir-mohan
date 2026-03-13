@@ -1,0 +1,65 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}ପୁସ୍ତକାବଳୀ - ମୋ ଫକୀର ମୋହନ{% endblock %}
+
+{% block content %}
+<section class="section">
+    <h2 class="section-title">ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ରଚିତ ପୁସ୍ତକ</h2>
+    <p class="section-description">
+        ଓଡ଼ିଆ ସାହିତ୍ୟର ଜନକ ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଅମର ସୃଷ୍ଟିଗୁଡ଼ିକ ଏଠାରେ ଉପଲବ୍ଧ |
+        ଡାଉନଲୋଡ୍ କରିବା ପାଇଁ ଦୟାକରି ଲଗଇନ୍ କରନ୍ତୁ |
+    </p>
+
+    {% if user.is_authenticated %}
+    <div class="alert alert-info">
+        ଆପଣ ଲଗଇନ୍ ଅଛନ୍ତି | ଏବେ ଆପଣ ପୁସ୍ତକ ଡାଉନଲୋଡ୍ କରିପାରିବେ |
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        ପୁସ୍ତକ ଡାଉନଲୋଡ୍ କରିବା ପାଇଁ ଦୟାକରି <a href="{% url 'login' %}">ଲଗଇନ୍</a> କରନ୍ତୁ କିମ୍ବା <a href="{% url 'register' %}">ପଞ୍ଜୀକରଣ</a> କରନ୍ତୁ |
+    </div>
+    {% endif %}
+
+    <div class="books-grid">
+        {% for book in books %}
+        <div class="book-card">
+            <div class="book-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+            </div>
+            <div class="book-info">
+                <h3 class="book-title">{{ book.title_odia }}</h3>
+                {% if book.title_en %}
+                <p class="book-title-en">{{ book.title_en }}</p>
+                {% endif %}
+                {% if book.description_odia %}
+                <p class="book-description">{{ book.description_odia }}</p>
+                {% endif %}
+                <div class="book-meta">
+                    <span class="book-size">ଆକାର: {{ book.file_size }}</span>
+                    <span class="book-downloads">ଡାଉନଲୋଡ: {{ book.download_count }}</span>
+                </div>
+            </div>
+            <div class="book-action">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'download_book' book.pk %}" class="btn btn-primary btn-download">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        ଡାଉନଲୋଡ୍
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn">ଲଗଇନ୍ କରି ଡାଉନଲୋଡ୍ କରନ୍ତୁ</a>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <p class="no-content">ବର୍ତ୍ତମାନ କୌଣସି ପୁସ୍ତକ ନାହିଁ |</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

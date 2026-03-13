@@ -1,0 +1,57 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}{{ article.title_odia }} - ମୋ ଫକୀର ମୋହନ{% endblock %}
+
+{% block content %}
+<section class="section">
+    <article class="article-detail">
+        <header class="article-header">
+            <h1 class="article-title">{{ article.title_odia }}</h1>
+            {% if article.title_en %}
+            <p class="article-title-en">{{ article.title_en }}</p>
+            {% endif %}
+            <div class="article-meta">
+                <span class="category">{{ article.category.name_odia }}</span>
+                <span class="date">{{ article.created_at|date:"d F Y" }}</span>
+            </div>
+        </header>
+
+        {% if article.image %}
+        <div class="article-image">
+            <img src="{{ article.image.url }}" alt="{{ article.title_odia }}">
+        </div>
+        {% endif %}
+
+        <div class="article-content">
+            {{ article.content_odia|linebreaks }}
+        </div>
+
+        {% if article.content_en %}
+        <div class="article-content-en">
+            <h3>English Summary</h3>
+            {{ article.content_en|linebreaks }}
+        </div>
+        {% endif %}
+    </article>
+
+    {% if related_articles %}
+    <aside class="related-articles">
+        <h2 class="section-title">ସମ୍ପର୍କିତ ପ୍ରବନ୍ଧ</h2>
+        <div class="card-grid">
+            {% for related in related_articles %}
+            <div class="card">
+                {% if related.image %}
+                    <img src="{{ related.image.url }}" alt="{{ related.title_odia }}" class="card-image">
+                {% endif %}
+                <div class="card-content">
+                    <h3 class="card-title">{{ related.title_odia }}</h3>
+                    <p class="card-text">{{ related.content_odia|truncatewords:20 }}</p>
+                    <a href="{% url 'article_detail' related.slug %}" class="btn">ପଢ଼ନ୍ତୁ</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </aside>
+    {% endif %}
+</section>
+{% endblock %}

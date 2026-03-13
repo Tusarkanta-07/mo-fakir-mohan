@@ -1,0 +1,74 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}ଜୀବନୀ - ମୋ ଫକୀର ମୋହନ{% endblock %}
+
+{% block content %}
+<section class="section">
+    <h2 class="section-title">ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଜୀବନୀ</h2>
+    
+    <div style="max-width: 900px; margin: 0 auto;">
+        <div class="card" style="padding: 30px; margin-bottom: 40px;">
+            <h3 style="color: var(--primary-color); margin-bottom: 20px;">ପରିଚୟ</h3>
+            <p style="line-height: 1.8; font-size: 1.1rem;">
+                ଫକୀର ମୋହନ ସେନାପତି ଜଣେ ବିଶିଷ୍ଟ ଓଡ଼ିଆ ଲେଖକ, ଦାର୍ଶନିକ ଏବଂ ସମାଜ ସଂସ୍କାରକ ଥିଲେ | 
+                ୧୮୪୩ ମସିହା ଜାନୁଆରୀ ୧୪ ତାରିଖରେ ଓଡ଼ିଶାର ଯାଜପୁର ଜିଲ୍ଲାରେ ଜନ୍ମଗ୍ରହଣ କରିଥିବା ଫକୀର ମୋହନ 
+                ଓଡ଼ିଆ ସାହିତ୍ୟକୁ ଏକ ନୂତନ ମାନଦଣ୍ଡ ପ୍ରଦାନ କରିଥିଲେ | ତାଙ୍କ ସାହିତ୍ୟିକ ଅବଦାନ ପାଇଁ 
+                ତାଙ୍କୁ "ଓଡ଼ିଆ ସାହିତ୍ୟର ଜନକ" ଭାବରେ ଅଭିହିତ କରାଯାଏ |
+            </p>
+        </div>
+
+        <div class="card" style="padding: 30px; margin-bottom: 40px;">
+            <h3 style="color: var(--primary-color); margin-bottom: 20px;">ପ୍ରାରମ୍ଭିକ ଜୀବନ</h3>
+            <p style="line-height: 1.8; font-size: 1.1rem;">
+                ଫକୀର ମୋହନଙ୍କ ପିତାଙ୍କ ନାମ ଥିଲା ମଧୁସୂଦନ ରାଓ ଏବଂ ମାତାଙ୍କ ନାମ ଥିଲା ପାର୍ବତୀ ଦେବୀ | 
+                ସେ ଅତି ଅଳ୍ପ ବୟସରେ ପିତାଙ୍କୁ ହରାଇଥିଲେ ଏବଂ ମାତାଙ୍କ ତତ୍ତ୍ୱାବଧାନରେ ଲାଳିତପାଳିତ ହୋଇଥିଲେ | 
+                ସେ ସ୍ୱାଧ୍ୟୟ ମାଧ୍ୟମରେ ଓଡ଼ିଆ, ସଂସ୍କୃତ, ବଙ୍ଗଳା ଏବଂ ଇଂରାଜୀ ଭାଷାରେ ପାରଙ୍ଗମ ହୋଇଥିଲେ |
+            </p>
+        </div>
+
+        <div class="card" style="padding: 30px; margin-bottom: 40px;">
+            <h3 style="color: var(--primary-color); margin-bottom: 20px;">ସାହିତ୍ୟିକ ଅବଦାନ</h3>
+            <p style="line-height: 1.8; font-size: 1.1rem;">
+                ଫକୀର ମୋହନ ସେନାପତି ଓଡ଼ିଆ ସାହିତ୍ୟର ବିଭିନ୍ନ ବିଧାରେ ଅବଦାନ ରଖିଥିଲେ | 
+                ତାଙ୍କ ରଚିତ "ଛମାଣ ଆଠଗୁଣ୍ଠ" ଓଡ଼ିଆ ସାହିତ୍ୟର ପ୍ରଥମ ଉପନ୍ୟାସ | 
+                ସେ ମଧ୍ୟ ଅନେକ କ୍ଷୁଦ୍ର ଗଳ୍ପ, କବିତା, ଆତ୍ମଜୀବନୀ ଏବଂ ଅନୁବାଦ ରଚନା କରିଥିଲେ |
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">ସମୟରେଖା</h2>
+    <div class="timeline">
+        {% for event in timeline_events %}
+        <div class="timeline-item">
+            <div class="timeline-year">{{ event.year }}</div>
+            <h4 style="color: var(--primary-color); margin: 10px 0;">{{ event.title_odia }}</h4>
+            <p style="color: #666;">{{ event.description_odia }}</p>
+        </div>
+        {% empty %}
+        <div class="timeline-item">
+            <p>ସମୟରେଖା ଉପଲବ୍ଧ ନାହିଁ |</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">ମୁଖ୍ୟ ଅବଦାନ</h2>
+    <div class="card-grid">
+        <div class="card" style="padding: 20px;">
+            <h4 style="color: var(--primary-color); margin-bottom: 15px;">ଉପନ୍ୟାସ</h4>
+            <p>ଛମାଣ ଆଠଗୁଣ୍ଠ - ଓଡ଼ିଆ ସାହିତ୍ୟର ପ୍ରଥମ ଉପନ୍ୟାସ</p>
+        </div>
+        <div class="card" style="padding: 20px;">
+            <h4 style="color: var(--primary-color); margin-bottom: 15px;">କ୍ଷୁଦ୍ର ଗଳ୍ପ</h4>
+            <p>ଅନେକ ଗୁଡ଼ିଏ କ୍ଷୁଦ୍ର ଗଳ୍ପ ରଚନା କରି ଓଡ଼ିଆରେ ଏହି ବିଧାର ପ୍ରବର୍ତ୍ତନ କରିଥିଲେ</p>
+        </div>
+        <div class="card" style="padding: 20px;">
+            <h4 style="color: var(--primary-color); margin-bottom: 15px;">ଆତ୍ମଜୀବନୀ</h4>
+            <p>ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଆତ୍ମଜୀବନୀ ଓଡ଼ିଆ ସାହିତ୍ୟରେ ଏକ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ସ୍ଥାନ ଅଧିକାର କରିଛି</p>
+        </div>
+    </div>
+</section>
+{% endblock %}
