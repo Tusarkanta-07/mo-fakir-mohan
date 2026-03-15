@@ -15,12 +15,14 @@ def home(request):
     recent_articles = Article.objects.all()[:5]
     recent_documents = Document.objects.filter(is_active=True)[:5]
     gallery_images = GalleryImage.objects.filter(is_featured=True)[:6]
-    
+    books = Book.objects.filter(is_active=True)[:5]
+
     context = {
         'featured_articles': featured_articles,
         'recent_articles': recent_articles,
         'recent_documents': recent_documents,
         'gallery_images': gallery_images,
+        'books': books,
     }
     return render(request, 'portal/home.html', context)
 

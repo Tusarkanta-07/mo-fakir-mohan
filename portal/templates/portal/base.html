@@ -5,53 +5,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}ମୋ ଫକୀର ମୋହନ - ଡିଜିଟାଲ୍ ଐତିହ୍ୟ ପୋର୍ଟାଲ{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'portal/css/style.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'portal/css/style.css' %}?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Oriya:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <h1>ମୋ ଫକୀର ମୋହନ</h1>
-                <p>ଡିଜିଟାଲ୍ ଐତିହ୍ୟ ପୋର୍ଟାଲ</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{% url 'home' %}" class="nav-logo">
+                <span class="logo-icon">
+                    <i class="fas fa-book-open"></i>
+                </span>
+                <span class="logo-text">
+                    <strong>ମୋ ଫକୀର ମୋହନ</strong>
+                    <em>Digital Heritage Portal</em>
+                </span>
+            </a>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="{% url 'home' %}" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>ମୁଖ୍ୟ ପୃଷ୍ଠା</span>
+                </a>
+                <a href="{% url 'about' %}" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>ଜୀବନୀ</span>
+                </a>
+                <a href="{% url 'works' %}" class="nav-link">
+                    <i class="fas fa-pen-fancy"></i>
+                    <span>ରଚନାବଳୀ</span>
+                </a>
+                <a href="{% url 'books' %}" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    <span>ପୁସ୍ତକ</span>
+                </a>
+                <a href="{% url 'legacy' %}" class="nav-link">
+                    <i class="fas fa-landmark"></i>
+                    <span>ଐତିହ୍ୟ</span>
+                </a>
+                <a href="{% url 'documents' %}" class="nav-link">
+                    <i class="fas fa-file-alt"></i>
+                    <span>ଦଲିଲ</span>
+                </a>
+                <a href="{% url 'gallery' %}" class="nav-link">
+                    <i class="fas fa-images"></i>
+                    <span>ଗ୍ୟାଲେରୀ</span>
+                </a>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="{% url 'home' %}">ମୁଖ୍ୟ ପୃଷ୍ଠା</a></li>
-                    <li><a href="{% url 'about' %}">ଜୀବନୀ</a></li>
-                    <li><a href="{% url 'works' %}">ରଚନାବଳୀ</a></li>
-                    <li><a href="{% url 'books' %}">ପୁସ୍ତକ</a></li>
-                    <li><a href="{% url 'legacy' %}">ଐତିହ୍ୟ</a></li>
-                    <li><a href="{% url 'documents' %}">ଦଲିଲ</a></li>
-                    <li><a href="{% url 'gallery' %}">ଗ୍ୟାଲେରୀ</a></li>
-                    {% if user.is_authenticated %}
-                        <li><a href="{% url 'logout' %}">ପ୍ରସ୍ଥାନ ({{ user.username }})</a></li>
-                    {% else %}
-                        <li><a href="{% url 'login' %}">ଲଗଇନ୍</a></li>
-                        <li><a href="{% url 'register' %}">ପଞ୍ଜୀକରଣ</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
+            
+            <div class="nav-actions">
+                {% if user.is_authenticated %}
+                    <span class="user-greeting">
+                        <i class="fas fa-user-circle"></i>
+                        {{ user.username }}
+                    </span>
+                    <a href="{% url 'logout' %}" class="btn btn-ghost">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-ghost">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </a>
+                    <a href="{% url 'register' %}" class="btn btn-primary">
+                        ପଞ୍ଜୀକରଣ
+                    </a>
+                {% endif %}
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <main>
         {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    {{ message }}
-                </div>
-            {% endfor %}
+            <div class="messages-container">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        <i class="fas {% if message.tags == 'success' %}fa-check-circle{% elif message.tags == 'error' %}fa-exclamation-circle{% else %}fa-info-circle{% endif %}"></i>
+                        {{ message }}
+                        <button type="button" class="close-btn" aria-label="Close">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
         {% endif %}
 
         {% block content %}{% endblock %}
     </main>
 
-    <footer>
-        <p>&copy; ୨୦୨୫ ମୋ ଫକୀର ମୋହନ - ଡିଜିଟାଲ୍ ଐତିହ୍ୟ ପୋର୍ଟାଲ</p>
-        <p>ଓଡ଼ିଆ ସାହିତ୍ୟ ଓ ସଂସ୍କୃତିର ସୁରକ୍ଷା ଓ ପ୍ରଚାର ପାଇଁ ଉତ୍ସର୍ଗୀକୃତ</p>
+    <footer class="footer">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0L60 10C120 20 240 40 360 46.7C480 53 600 47 720 43.3C840 40 960 40 1080 46.7C1200 53 1320 67 1380 73.3L1440 80V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0V0Z" fill="currentColor"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-book-open"></i>
+                        <h3>ମୋ ଫକୀର ମୋହନ</h3>
+                    </div>
+                    <p>ଓଡ଼ିଆ ସାହିତ୍ୟ ଓ ସଂସ୍କୃତିର ସୁରକ୍ଷା ଓ ପ୍ରଚାର ପାଇଁ ଉତ୍ସର୍ଗୀକୃତ</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>ଦ୍ରୁତ ଲିଙ୍କ୍</h4>
+                    <ul>
+                        <li><a href="{% url 'home' %}">ମୁଖ୍ୟ ପୃଷ୍ଠା</a></li>
+                        <li><a href="{% url 'about' %}">ଜୀବନୀ</a></li>
+                        <li><a href="{% url 'books' %}">ପୁସ୍ତକ</a></li>
+                        <li><a href="{% url 'gallery' %}">ଗ୍ୟାଲେରୀ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>ଯୋଗାଯୋଗ</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@mofakirmohan.org</li>
+                        <li><i class="fas fa-phone"></i> +୯୧ ୯୮୭୬୫୪୩୨୧୦</li>
+                        <li><i class="fas fa-map-marker-alt"></i> ଯାଜପୁର, ଓଡ଼ିଶା</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; ୨୦୨୫ ମୋ ଫକୀର ମୋହନ - ଡିଜିଟାଲ୍ ଐତିହ୍ୟ ପୋର୍ଟାଲ</p>
+                <p>ନିର୍ମିତ <i class="fas fa-heart"></i> ସହ ଓଡ଼ିଆ ସାହିତ୍ୟ ପ୍ରେମୀଙ୍କ ପାଇଁ</p>
+            </div>
+        </div>
     </footer>
 
-    <script src="{% static 'portal/js/main.js' %}"></script>
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="{% static 'portal/js/main.js' %}?v=2"></script>
 </body>
 </html>

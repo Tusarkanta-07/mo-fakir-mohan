@@ -2,90 +2,197 @@
 {% load static %}
 
 {% block content %}
-<section class="hero" style="background-image: linear-gradient(rgba(26, 95, 122, 0.85), rgba(21, 152, 149, 0.85)), url('/books/fakir-mohan-senapati.jpg'); background-size: cover; background-position: center;">
-    <div class="hero-content">
-        <img src="/books/fakir-mohan-senapati.jpg" alt="ଫକୀର ମୋହନ ସେନାପତି" class="hero-image">
-        <h2>ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଡିଜିଟାଲ୍ ଐତିହ୍ୟ ପୋର୍ଟାଲକୁ ସ୍ୱାଗତ</h2>
-        <p>ଓଡ଼ିଆ ସାହିତ୍ୟର ଜନକ ଏବଂ ବିଶିଷ୍ଟ ସାହିତ୍ୟିକ ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଜୀବନ, ରଚନା ଏବଂ ଐତିହ୍ୟ ବିଷୟରେ ଜାଣନ୍ତୁ</p>
-        <a href="{% url 'about' %}" class="btn">ଅଧିକ ଜାଣନ୍ତୁ</a>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-feather-alt"></i>
+                ଓଡ଼ିଆ ସାହିତ୍ୟର ଜନକ
+            </div>
+            <h1>ଫକୀର ମୋହନ <span>ସେନାପତି</span></h1>
+            <p class="hero-description">
+                ଓଡ଼ିଆ ସାହିତ୍ୟର ବିଶିଷ୍ଟ ଲେଖକ, ଦାର୍ଶନିକ ଏବଂ ସମାଜ ସଂସ୍କାରକଙ୍କ ଡିଜିଟାଲ୍ ଐତିହ୍ୟ ପୋର୍ଟାଲକୁ ସ୍ୱାଗତ |
+                ତାଙ୍କ ଜୀବନ, ରଚନା ଏବଂ ଅବଦାନ ବିଷୟରେ ଅଧିକ ଜାଣନ୍ତୁ |
+            </p>
+            <div class="hero-buttons">
+                <a href="{% url 'about' %}" class="btn btn-primary">
+                    <i class="fas fa-user"></i>
+                    ଅଧିକ ଜାଣନ୍ତୁ
+                </a>
+                <a href="{% url 'books' %}" class="btn btn-white">
+                    <i class="fas fa-book"></i>
+                    ପୁସ୍ତକାବଳୀ
+                </a>
+            </div>
+        </div>
+        <div class="hero-image-wrapper">
+            <div class="hero-accent hero-accent-1"></div>
+            <div class="hero-accent hero-accent-2"></div>
+            <div class="hero-image-frame">
+                <img src="/books/fakir-mohan-senapati.jpg" alt="ଫକୀର ମୋହନ ସେନାପତି">
+            </div>
+        </div>
     </div>
 </section>
 
+<!-- About Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ପରିଚୟ</span>
+            <h2 class="section-title">ଫକୀର ମୋହନ ସେନାପତି</h2>
+            <p class="section-subtitle">
+                ଓଡ଼ିଆ ସାହିତ୍ୟର ଜନକ ଏବଂ ବିଶିଷ୍ଟ ସାହିତ୍ୟିକ ଯାହାଙ୍କ ଅବଦାନ ଆଜି ମଧ୍ୟ ଅମର
+            </p>
+        </div>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-pen-fancy"></i>
+                </div>
+                <h3 class="feature-title">ବିଶିଷ୍ଟ ଲେଖକ</h3>
+                <p class="feature-text">ଓଡ଼ିଆ ସାହିତ୍ୟର ଜନକ ଭାବରେ ପରିଚିତ</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="feature-title">ପ୍ରଥମ ଉପନ୍ୟାସ</h3>
+                <p class="feature-text">ଛମାଣ ଆଠଗୁଣ୍ଠ - ଓଡ଼ିଆର ପ୍ରଥମ ଉପନ୍ୟାସ</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h3 class="feature-title">ସମାଜ ସଂସ୍କାରକ</h3>
+                <p class="feature-text">କୁସଂସ୍କାର ବିରୁଦ୍ଧରେ ଲେଖନୀ ଚାଳନା</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="{% url 'about' %}" class="btn btn-primary">
+                <i class="fas fa-user"></i>
+                ଜୀବନୀ ପଢ଼ନ୍ତୁ
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Articles -->
 {% if featured_articles %}
-<section class="section">
-    <h2 class="section-title">ପ୍ରମୁଖ ପ୍ରବନ୍ଧ</h2>
-    <div class="card-grid">
-        {% for article in featured_articles %}
-        <div class="card">
-            {% if article.image %}
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ପ୍ରବନ୍ଧ</span>
+            <h2 class="section-title">ପ୍ରମୁଖ ପ୍ରବନ୍ଧ</h2>
+            <p class="section-subtitle">
+                ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ବିଷୟରେ ବିସ୍ତୃତ ପ୍ରବନ୍ଧାବଳୀ
+            </p>
+        </div>
+        
+        <div class="card-grid">
+            {% for article in featured_articles %}
+            <div class="card">
+                {% if article.image %}
                 <img src="{{ article.image.url }}" alt="{{ article.title_odia }}" class="card-image">
-            {% endif %}
-            <div class="card-content">
-                <h3 class="card-title">{{ article.title_odia }}</h3>
-                <p class="card-text">{{ article.content_odia|truncatewords:30 }}</p>
-                <a href="{% url 'article_detail' article.slug %}" class="btn">ପଢ଼ନ୍ତୁ</a>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
-{% endif %}
-
-<section class="section">
-    <h2 class="section-title">ଫକୀର ମୋହନ ସେନାପତି</h2>
-    <div style="text-align: center; max-width: 800px; margin: 0 auto;">
-        <p style="font-size: 1.1rem; line-height: 1.8;">
-            ଫକୀର ମୋହନ ସେନାପତି (୧୮୪୩-୧୯୧୮) ଜଣେ ବିଶିଷ୍ଟ ଓଡ଼ିଆ ଲେଖକ, ଦାର୍ଶନିକ ଏବଂ ସମାଜ ସଂସ୍କାରକ ଥିଲେ | 
-            ତାଙ୍କୁ "ଓଡ଼ିଆ ସାହିତ୍ୟର ଜନକ" ଭାବରେ ମଧ୍ୟ ଅଭିହିତ କରାଯାଏ | ତାଙ୍କ ରଚିତ "ଛମାଣ ଆଠଗୁଣ୍ଠ" 
-            ଓଡ଼ିଆ ସାହିତ୍ୟର ପ୍ରଥମ ଉପନ୍ୟାସ ଭାବରେ ପରିଗଣିତ | ତାଙ୍କ ସାହିତ୍ୟ ମାଧ୍ୟମରେ ସେ ସମାଜର ବିଭିନ୍ନ 
-            ସମସ୍ୟା, କୁସଂସ୍କାର ଏବଂ ଅନ୍ଧବିଶ୍ୱାସ ବିରୁଦ୍ଧରେ ଲେଖନୀ ଚାଳନା କରିଥିଲେ |
-        </p>
-        <a href="{% url 'about' %}" class="btn mt-20">ଜୀବନୀ ପଢ଼ନ୍ତୁ</a>
-    </div>
-</section>
-
-{% if recent_documents %}
-<section class="section">
-    <h2 class="section-title">ସାମ୍ପ୍ରତିକ ଦଲିଲ</h2>
-    <ul class="document-list">
-        {% for doc in recent_documents %}
-        <li class="document-item">
-            <div class="document-info">
-                <h4>{{ doc.title_odia }}</h4>
-                {% if doc.description_odia %}
-                <p class="document-meta">{{ doc.description_odia|truncatewords:15 }}</p>
                 {% endif %}
-                <p class="document-meta">ଡାଉନଲୋଡ: {{ doc.download_count }}</p>
+                <div class="card-content">
+                    <span class="card-category">ପ୍ରବନ୍ଧ</span>
+                    <h3 class="card-title">{{ article.title_odia }}</h3>
+                    <p class="card-text">{{ article.content_odia|truncatewords:25 }}</p>
+                    <a href="{% url 'article_detail' article.slug %}" class="card-link">
+                        ପଢ଼ନ୍ତୁ <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
             </div>
-            {% if user.is_authenticated %}
-                <a href="{% url 'download_document' doc.pk %}" class="btn">ଡାଉନଲୋଡ୍</a>
-            {% else %}
-                <a href="{% url 'login' %}" class="btn">ଲଗଇନ୍ କରି ଡାଉନଲୋଡ୍ କରନ୍ତୁ</a>
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
-    <div class="text-center mt-20">
-        <a href="{% url 'documents' %}" class="btn">ସମସ୍ତ ଦଲିଲ ଦେଖନ୍ତୁ</a>
+            {% endfor %}
+        </div>
     </div>
 </section>
 {% endif %}
 
-{% if gallery_images %}
+<!-- Books Section -->
 <section class="section">
-    <h2 class="section-title">ଚିତ୍ରଶାଳା</h2>
-    <div class="gallery-grid">
-        {% for image in gallery_images %}
-        <div class="gallery-item">
-            <img src="{{ image.image.url }}" alt="{{ image.title_odia }}">
-            {% if image.description_odia %}
-            <div class="gallery-caption">{{ image.title_odia }}</div>
-            {% endif %}
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ପୁସ୍ତକ</span>
+            <h2 class="section-title">ପୁସ୍ତକାବଳୀ</h2>
+            <p class="section-subtitle">
+                ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ରଚିତ ପୁସ୍ତକ ସମୂହ
+            </p>
         </div>
-        {% endfor %}
+        
+        <div style="max-width: 800px; margin: 0 auto;">
+            {% for book in books|slice:":5" %}
+            <div class="book-card">
+                <div class="book-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">{{ book.title_odia }}</h3>
+                    <p class="book-title-en">{{ book.title_en }}</p>
+                    <div class="book-meta">
+                        <span><i class="fas fa-download"></i> {{ book.download_count }} ଥର ଡାଉନଲୋଡ୍</span>
+                    </div>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'download_book' book.pk %}" class="btn btn-primary btn-sm">
+                        <i class="fas fa-download"></i> ଡାଉନଲୋଡ୍
+                    </a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-outline btn-sm">
+                        <i class="fas fa-sign-in-alt"></i> ଲଗଇନ୍ କରନ୍ତୁ
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="{% url 'books' %}" class="btn btn-outline">
+                ସମସ୍ତ ପୁସ୍ତକ ଦେଖନ୍ତୁ <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
     </div>
-    <div class="text-center mt-20">
-        <a href="{% url 'gallery' %}" class="btn">ସମସ୍ତ ଛବି ଦେଖନ୍ତୁ</a>
+</section>
+
+<!-- Gallery Section -->
+{% if gallery_images %}
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ଚିତ୍ରଶାଳା</span>
+            <h2 class="section-title">ଫଟୋ ଗ୍ୟାଲେରୀ</h2>
+            <p class="section-subtitle">
+                ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଜୀବନ ଏବଂ କାର୍ଯ୍ୟର ବିଭିନ୍ନ ଚିତ୍ର
+            </p>
+        </div>
+        
+        <div class="gallery-grid">
+            {% for image in gallery_images|slice:":6" %}
+            <div class="gallery-item">
+                <img src="{{ image.image.url }}" alt="{{ image.title_odia|default:'Gallery Image' }}">
+                <div class="gallery-overlay">
+                    {% if image.title_odia %}
+                    <div class="gallery-caption">
+                        <h4>{{ image.title_odia }}</h4>
+                        {% if image.description_odia %}
+                        <p>{{ image.description_odia|truncatewords:10 }}</p>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="{% url 'gallery' %}" class="btn btn-outline">
+                ସମସ୍ତ ଛବି ଦେଖନ୍ତୁ <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
     </div>
 </section>
 {% endif %}

@@ -1,99 +1,393 @@
 {% extends 'portal/base.html' %}
+{% load static %}
 
 {% block title %}ଐତିହ୍ୟ - ମୋ ଫକୀର ମୋହନ{% endblock %}
 
 {% block content %}
-<section class="section">
-    <h2 class="section-title">ଫକୀର ମୋହନଙ୍କ ଐତିହ୍ୟ</h2>
-    <p style="text-align: center; max-width: 900px; margin: 0 auto 40px; font-size: 1.1rem; line-height: 1.8;">
-        ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଅବଦାନ କେବଳ ସାହିତ୍ୟ ମଧ୍ୟରେ ସୀମିତ ନୁହେଁ | 
-        ସେ ଜଣେ ସମାଜ ସଂସ୍କାରକ ଭାବରେ ମଧ୍ୟ ପରିଚିତ ଥିଲେ | ତାଙ୍କ ଚିନ୍ତାଧାରା ଏବଂ 
-        ଲେଖନୀ ଓଡ଼ିଆ ସମାଜକୁ ଏକ ନୂତନ ଦିଗ ଦେଇଥିଲା |
-    </p>
+<!-- Page Header -->
+<section class="hero" style="min-height: 50vh; padding: 4rem 0;">
+    <div class="hero-container" style="text-align: center;">
+        <div class="hero-content" style="text-align: center; width: 100%;">
+            <div class="hero-badge">
+                <i class="fas fa-landmark"></i>
+                ଐତିହ୍ୟ
+            </div>
+            <h1 style="font-size: 2.5rem;">ଫକୀର ମୋହନଙ୍କ <span>ସ୍ଥାୟୀ ପ୍ରଭାବ</span></h1>
+            <p class="hero-description" style="max-width: 700px; margin: 0 auto;">
+                ଜଣେ ଭାଷାବିତ୍, ଦାର୍ଶନିକ, ସାମ୍ବାଦିକ, ପ୍ରଶାସକ ଏବଂ ଆଧୁନିକ ଓଡ଼ିଶାର ନିର୍ମାତା
+            </p>
+        </div>
+    </div>
 </section>
 
-{% if articles %}
+<!-- Legacy Item 1: Savior of Odia Language -->
 <section class="section">
-    <h2 class="section-title">ଐତିହ୍ୟ ବିଷୟରେ ପ୍ରବନ୍ଧ</h2>
-    <div class="card-grid">
-        {% for article in articles %}
-        <div class="card">
-            {% if article.image %}
-                <img src="{{ article.image.url }}" alt="{{ article.title_odia }}" class="card-image">
-            {% endif %}
-            <div class="card-content">
-                <h3 class="card-title">{{ article.title_odia }}</h3>
-                <p class="card-text">{{ article.content_odia|truncatewords:35 }}</p>
-                <a href="{% url 'article_detail' article.slug %}" class="btn">ପଢ଼ନ୍ତୁ</a>
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ଐତିହ୍ୟ #୧</span>
+            <h2 class="section-title">ଓଡ଼ିଆ ଭାଷାର ତ୍ରାଣକର୍ତ୍ତା</h2>
+            <p class="section-subtitle">
+                The Savior of Odia Language
+            </p>
+        </div>
+
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div class="card" style="padding: 3rem; border: none; box-shadow: var(--shadow-md); margin-bottom: 2rem;">
+                <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem;">
+                            <i class="fas fa-shield-alt" style="margin-right: 10px;"></i>
+                            ଭାଷା ଆନ୍ଦୋଳନ
+                        </h3>
+                        <p style="line-height: 2; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            ୧୮୬୬ ମସିହାର ନଅଙ୍କ ଦୁର୍ଭିକ୍ଷ ପରେ ଓଡ଼ିଆ ଭାଷା ଉପରେ ଏକ ବଡ଼ ସଙ୍କଟ ଆସିଥିଲା। ବଙ୍ଗୀୟ ବୁଦ୍ଧିଜୀବୀ କାନ୍ତିଚନ୍ଦ୍ର ଭଟ୍ଟାଚାର୍ଯ୍ୟ 'ଉଡ଼ିୟା ଏକ ସ୍ୱତନ୍ତ୍ର ଭାଷା ନୟ' ନାମକ ଏକ ପୁସ୍ତକ ଲେଖି ଓଡ଼ିଆ ଭାଷାକୁ ବଙ୍ଗଳାର ଏକ ଉପଭାଷା ବୋଲି ପ୍ରମାଣ କରିବାକୁ ଚେଷ୍ଟା କରିଥିଲେ।
+                        </p>
+                        <p style="line-height: 2; color: var(--text-secondary);">
+                            ଫକୀର ମୋହନ ଏହାର ତୀବ୍ର ବିରୋଧ କରିଥିଲେ ଏବଂ ଜନ୍ ବିମ୍ସଙ୍କ ଭଳି ବ୍ରିଟିଶ୍ ଅଧିକାରୀଙ୍କୁ ଓଡ଼ିଆ ଭାଷାର ପ୍ରାଚୀନତା ଓ ସ୍ୱତନ୍ତ୍ରତା ବିଷୟରେ ବୁଝାଇବାରେ ସଫଳ ହୋଇଥିଲେ।
+                        </p>
+                    </div>
+                    <div style="flex-shrink: 0;">
+                        <div style="background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 2.5rem; border-radius: 20px; text-align: center; min-width: 250px;">
+                            <i class="fas fa-print" style="font-size: 4rem; margin-bottom: 1.5rem; opacity: 0.9;"></i>
+                            <h4 style="font-size: 1.2rem; margin-bottom: 1rem;">ଉତ୍କଳ ପ୍ରେସ୍</h4>
+                            <p style="font-size: 0.95rem; opacity: 0.95; line-height: 1.6;">
+                                କଲିକତାରୁ ମୁଦ୍ରଣ ଯନ୍ତ୍ର କିଣି ଶଗଡ଼ ଗାଡ଼ିରେ ବାଲେଶ୍ୱର ଆଣିଥିଲେ
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-grid" style="margin-top: 3rem;">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-reader"></i>
+                    </div>
+                    <h3 class="feature-title">ପାଠ୍ୟପୁସ୍ତକ ପ୍ରକାଶନ</h3>
+                    <p class="feature-text">
+                        ଓଡ଼ିଆ ଭାଷାରେ ପାଠ୍ୟପୁସ୍ତକ ପ୍ରକାଶନରେ ଏକ ଯୁଗାନ୍ତକାରୀ ପଦକ୍ଷେପ
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3 class="feature-title">ଭାଷାର ସ୍ୱତନ୍ତ୍ରତା</h3>
+                    <p class="feature-text">
+                        ଓଡ଼ିଆ ଭାଷାର ପ୍ରାଚୀନତା ଓ ସ୍ୱତନ୍ତ୍ରତା ପ୍ରତିଷ୍ଠା
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">ଜାତୀୟତାବୋଧ</h3>
+                    <p class="feature-text">
+                        ଓଡ଼ିଆ ଲୋକଙ୍କ ମଧ୍ୟରେ ଜାତୀୟତାବୋଧ ଜାଗ୍ରତ
+                    </p>
+                </div>
             </div>
         </div>
-        {% endfor %}
-    </div>
-</section>
-{% endif %}
-
-<section class="section">
-    <h2 class="section-title">ସମାଜ ସଂସ୍କାର</h2>
-    <div class="card-grid">
-        <div class="card" style="padding: 25px;">
-            <h4 style="color: var(--primary-color); margin-bottom: 15px;">ନାରୀ ଶିକ୍ଷା</h4>
-            <p style="line-height: 1.8;">
-                ଫକୀର ମୋହନ ନାରୀ ଶିକ୍ଷାର ପ୍ରବଳ ସମର୍ଥକ ଥିଲେ | ସେ ତାଙ୍କ ଲେଖା ମାଧ୍ୟମରେ 
-                ନାରୀ ଶିକ୍ଷା ଓ ସଶକ୍ତିକରଣ ପାଇଁ ଆହ୍ୱାନ ଦେଇଥିଲେ |
-            </p>
-        </div>
-        <div class="card" style="padding: 25px;">
-            <h4 style="color: var(--primary-color); margin-bottom: 15px;">କୁସଂସ୍କାର ବିରୋଧ</h4>
-            <p style="line-height: 1.8;">
-                ସେ ସମାଜର କୁସଂସ୍କାର, ଅନ୍ଧବିଶ୍ୱାସ ଏବଂ କୁପ୍ରଥା ବିରୁଦ୍ଧରେ ଲେଖନୀ ଚାଳନା କରିଥିଲେ | 
-                ତାଙ୍କ ଲେଖା ଲୋକଙ୍କୁ ସଚେତନ କରିଥିଲା |
-            </p>
-        </div>
-        <div class="card" style="padding: 25px;">
-            <h4 style="color: var(--primary-color); margin-bottom: 15px;">ଭାଷା ଆନ୍ଦୋଳନ</h4>
-            <p style="line-height: 1.8;">
-                ଓଡ଼ିଆ ଭାଷା ଏବଂ ସାହିତ୍ୟର ବିକାଶ ପାଇଁ ଫକୀର ମୋହନ ଅନେକ ଆନ୍ଦୋଳନରେ 
-                ସକ୍ରିୟ ଭୂମିକା ଗ୍ରହଣ କରିଥିଲେ |
-            </p>
-        </div>
     </div>
 </section>
 
-<section class="section">
-    <h2 class="section-title">ପ୍ରଭାବ</h2>
-    <div style="max-width: 900px; margin: 0 auto; padding: 30px; background: var(--white); border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
-        <p style="line-height: 1.8; font-size: 1.1rem; margin-bottom: 20px;">
-            ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ସାହିତ୍ୟିକ ଅବଦାନ ପରବର୍ତ୍ତୀ ପିଢ଼ିର ଲେଖକମାନଙ୍କୁ ଗଭୀର ଭାବରେ ପ୍ରଭାବିତ କରିଥିଲା | 
-            ଗୋପୀନାଥ ମହାନ୍ତି, କାଳିନ୍ଦୀ ଚରଣ ପାଣିଗ୍ରାହୀ, ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଆଦର୍ଶରେ ଅନୁପ୍ରାଣିତ ହୋଇ 
-            ଓଡ଼ିଆ ସାହିତ୍ୟକୁ ସମୃଦ୍ଧ କରିଥିଲେ |
-        </p>
-        <p style="line-height: 1.8; font-size: 1.1rem; margin-bottom: 20px;">
-            ତାଙ୍କ ରଚନାବଳୀ ଆଜି ମଧ୍ୟ ଓଡ଼ିଆ ସାହିତ୍ୟ ପ୍ରେମୀମାନଙ୍କ ପାଇଁ ପ୍ରେରଣାର ଉତ୍ସ | 
-            ଓଡ଼ିଶାର ବିଭିନ୍ନ ଶିକ୍ଷାନୁଷ୍ଠାନରେ ତାଙ୍କ ରଚନା ପାଠ୍ୟକ୍ରମରେ ଅନ୍ତର୍ଭୁକ୍ତ |
-        </p>
-        <p style="line-height: 1.8; font-size: 1.1rem;">
-            ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଜୟନ୍ତୀ ପ୍ରତି ବର୍ଷ ଓଡ଼ିଶାରେ ଉତ୍ସାହର ସହ ପାଳିତ ହୁଏ | 
-            ଏହି ଦିବସରେ ବିଭିନ୍ନ ସାହିତ୍ୟିକ କାର୍ଯ୍ୟକ୍ରମ ଆୟୋଜିତ ହୋଇଥାଏ |
-        </p>
+<!-- Legacy Item 2: Pioneer of Literary Realism -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ଐତିହ୍ୟ #୨</span>
+            <h2 class="section-title">ବାସ୍ତବବାଦୀ ସାହିତ୍ୟର ଆଦ୍ୟ ସ୍ରଷ୍ଟା</h2>
+            <p class="section-subtitle">
+                Pioneer of Literary Realism
+            </p>
+        </div>
+
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div class="card" style="padding: 3rem; border: none; box-shadow: var(--shadow-md); margin-bottom: 2rem; background: linear-gradient(135deg, rgba(194, 65, 12, 0.03), rgba(245, 158, 11, 0.03));">
+                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem;">
+                    <i class="fas fa-pen-nib" style="margin-right: 10px;"></i>
+                    ସାହିତ୍ୟରେ ବିପ୍ଳବ
+                </h3>
+                <p style="line-height: 2; color: var(--text-secondary); font-size: 1.05rem;">
+                    ଫକୀର ମୋହନଙ୍କ ପୂର୍ବରୁ ଓଡ଼ିଆ ସାହିତ୍ୟ କେବଳ ଦେବାଦେବୀ, ରାଜା-ରାଣୀ ଏବଂ କାଳ୍ପନିକ ପ୍ରେମ କାହାଣୀ ମଧ୍ୟରେ ସୀମିତ ଥିଲା। ଫକୀର ମୋହନ ପ୍ରଥମେ ସାଧାରଣ ଲୋକ, ଚାଷୀ, ତନ୍ତୀ, ମୂଲିଆ ଏବଂ ସମାଜର ନିଷ୍ପେସିତ ବର୍ଗଙ୍କୁ ନିଜ ସାହିତ୍ୟର ନାୟକ ସଜାଇଲେ।
+                </p>
+            </div>
+
+            <div class="card" style="padding: 2.5rem; border: none; box-shadow: var(--shadow-md); margin-bottom: 2rem;">
+                <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: var(--primary); margin-bottom: 1.5rem;">
+                    <i class="fas fa-book" style="margin-right: 10px;"></i>
+                    ଛ ମାଣ ଆଠ ଗୁଣ୍ଠ - ଏକ କାଳଜୟୀ ସୃଷ୍ଟି
+                </h3>
+                <p style="line-height: 2; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    ଏହା ଭାରତୀୟ ସାହିତ୍ୟର ପ୍ରଥମ ଉପନ୍ୟାସ ଯେଉଁଥିରେ ଜଣେ ସାଧାରଣ ତନ୍ତୀ ଦମ୍ପତି (ଭଗିଆ ଓ ସାରିଆ) ମୁଖ୍ୟ ଚରିତ୍ର ଏବଂ ଶୋଷକ ଜମିଦାର ରାମଚନ୍ଦ୍ର ମଙ୍ଗରାଜ ଖଳନାୟକ।
+                </p>
+                <div style="background: rgba(194, 65, 12, 0.08); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--primary);">
+                    <p style="color: var(--text-secondary); font-style: italic; margin: 0;">
+                        <i class="fas fa-quote-left" style="color: var(--primary); margin-right: 8px;"></i>
+                        ମାର୍କ୍ସବାଦ ଭାରତରେ ପହଞ୍ଚିବା ପୂର୍ବରୁ ସେ ଏହି ଉପନ୍ୟାସ ଜରିଆରେ ପୁଞ୍ଜିବାଦ ଓ ଜମିଦାରୀ ପ୍ରଥାର ଶୋଷଣ ବିରୋଧରେ ସ୍ୱର ଉତ୍ତୋଳନ କରିଥିଲେ।
+                    </p>
+                </div>
+            </div>
+
+            <h3 style="font-family: var(--font-heading); font-size: 1.6rem; color: var(--text-primary); margin: 3rem 0 2rem; text-align: center;">
+                ସମାଜ ସଂସ୍କାରମୂଳକ ଗଳ୍ପ
+            </h3>
+
+            <div style="display: grid; gap: 1.5rem;">
+                <div class="book-card">
+                    <div class="book-icon" style="background: linear-gradient(135deg, #c2410c, #ea580c);">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">ରେବତୀ</h3>
+                        <p class="book-description">
+                            ନାରୀ ଶିକ୍ଷାର ଆବଶ୍ୟକତା ଓ ରକ୍ଷଣଶୀଳ ସମାଜର ଅନ୍ଧବିଶ୍ୱାସର କରୁଣ ଚିତ୍ର।
+                        </p>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-icon" style="background: linear-gradient(135deg, #c2410c, #ea580c);">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">ପେଟେଣ୍ଟ ମେଡିସିନ୍</h3>
+                        <p class="book-description">
+                            ମଦ୍ୟପାନର କୁପରିଣାମ ଏବଂ ସମାଜରେ ନାରୀର ସଶକ୍ତ ଭୂମିକା (ସୁଲୋଚନା ଦେଈ ଚରିତ୍ର ମାଧ୍ୟମରେ)ର ଚମତ୍କାର ଉପସ୍ଥାପନା।
+                        </p>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-icon" style="background: linear-gradient(135deg, #c2410c, #ea580c);">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">ଡାକମୁନ୍ସି</h3>
+                        <p class="book-description">
+                            ଆଧୁନିକ ଶିକ୍ଷା ପାଇବା ପରେ ପିତାମାତାଙ୍କ ପ୍ରତି ଯୁବପିଢ଼ିର ଅବହେଳା ଓ ପିଢ଼ିଗତ ବ୍ୟବଧାନ (Generation gap) ର ବାସ୍ତବ ଚିତ୍ରଣ।
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-{% if gallery %}
+<!-- Legacy Item 3: Foundation of Odia Journalism -->
 <section class="section">
-    <h2 class="section-title">ଚିତ୍ରଶାଳା</h2>
-    <div class="gallery-grid">
-        {% for image in gallery %}
-        <div class="gallery-item">
-            <img src="{{ image.image.url }}" alt="{{ image.title_odia }}">
-            {% if image.description_odia %}
-            <div class="gallery-caption">{{ image.title_odia }}</div>
-            {% endif %}
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ଐତିହ୍ୟ #୩</span>
+            <h2 class="section-title">ସାମ୍ବାଦିକତାର ମୂଳଦୁଆ</h2>
+            <p class="section-subtitle">
+                Foundation of Odia Journalism
+            </p>
         </div>
-        {% endfor %}
-    </div>
-    <div class="text-center mt-20">
-        <a href="{% url 'gallery' %}" class="btn">ସମସ୍ତ ଛବି ଦେଖନ୍ତୁ</a>
+
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="card" style="padding: 3rem; border: none; box-shadow: var(--shadow-md); text-align: center;">
+                <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                    <div style="text-align: center;">
+                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: var(--shadow-md);">
+                            <i class="fas fa-newspaper" style="font-size: 2.5rem; color: white;"></i>
+                        </div>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--primary); margin-bottom: 0.5rem;">ବୋଧଦାୟିନୀ</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">୧୮୬୮</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; box-shadow: var(--shadow-md);">
+                            <i class="fas fa-rss" style="font-size: 2.5rem; color: white;"></i>
+                        </div>
+                        <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--primary); margin-bottom: 0.5rem;">ବାଲେଶ୍ୱର ସମ୍ବାଦ ବାହିକା</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">ସମ୍ବାଦପତ୍ର</p>
+                    </div>
+                </div>
+                <p style="line-height: 2; color: var(--text-secondary); max-width: 700px; margin: 0 auto; font-size: 1.05rem;">
+                    ଏହି ପତ୍ରିକାଗୁଡ଼ିକ କେବଳ ଖବର ପ୍ରସାରଣ କରୁନଥିଲେ, ବରଂ ଓଡ଼ିଆ ଲୋକଙ୍କ ମଧ୍ୟରେ ଜାତୀୟତାବୋଧ ଜାଗ୍ରତ କରିବାରେ ଏବଂ ବ୍ରିଟିଶ୍ ପ୍ରଶାସନର ତ୍ରୁଟି ଦର୍ଶାଇବାରେ ପ୍ରମୁଖ ଭୂମିକା ଗ୍ରହଣ କରିଥିଲେ।
+                </p>
+            </div>
+        </div>
     </div>
 </section>
-{% endif %}
+
+<!-- Legacy Item 4: Astute Administrator -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ଐତିହ୍ୟ #୪</span>
+            <h2 class="section-title">ଦକ୍ଷ ପ୍ରଶାସକ ଓ କୂଟନୀତିଜ୍ଞ</h2>
+            <p class="section-subtitle">
+                Astute Administrator & Diplomat
+            </p>
+        </div>
+
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div class="card" style="padding: 3rem; border: none; box-shadow: var(--shadow-md); margin-bottom: 2rem;">
+                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem;">
+                    <i class="fas fa-landmark" style="margin-right: 10px;"></i>
+                    ଗଡ଼ଜାତ ପ୍ରଶାସନ
+                </h3>
+                <p style="line-height: 2; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    ସେ କେବଳ ଜଣେ ଲେଖକ ନଥିଲେ, ବରଂ ନୀଳଗିରି, ଡମପଡ଼ା, ଦଶପଲ୍ଲା ଏବଂ କେନ୍ଦୁଝର ଭଳି ବିଭିନ୍ନ ଗଡ଼ଜାତ ରାଜ୍ୟରେ ଦେୱାନ (ମନ୍ତ୍ରୀ) ଭାବେ କାର୍ଯ୍ୟ କରିଥିଲେ।
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                    <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">ନୀଳଗିରି</span>
+                    <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">ଡମପଡ଼ା</span>
+                    <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">ଦଶପଲ୍ଲା</span>
+                    <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">କେନ୍ଦୁଝର</span>
+                </div>
+            </div>
+
+            <div class="card" style="padding: 3rem; border: none; box-shadow: var(--shadow-md); background: linear-gradient(135deg, rgba(194, 65, 12, 0.05), rgba(245, 158, 11, 0.05));">
+                <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem;">
+                            <i class="fas fa-chess-knight" style="margin-right: 10px;"></i>
+                            କେନ୍ଦୁଝର ପ୍ରଜାମେଳି
+                        </h3>
+                        <p style="line-height: 2; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            କେନ୍ଦୁଝରରେ ଭୂୟାଁ ଆନ୍ଦୋଳନ ସମୟରେ ବିଦ୍ରୋହୀମାନେ ତାଙ୍କୁ ବନ୍ଦୀ କରିନେଇଥିଲେ। ସେ ନିଜର ଚତୁରତା ଖଟାଇ ବିଦ୍ରୋହୀଙ୍କ ଜରିଆରେ ହିଁ କଟକରେ ଥିବା ଇଂରେଜ ସରକାରଙ୍କ ନିକଟକୁ ଏକ ସାଙ୍କେତିକ ବାର୍ତ୍ତା ପଠାଇ ନିଜର ଏବଂ ରାଜାଙ୍କର ଜୀବନ ରକ୍ଷା କରିଥିଲେ।
+                        </p>
+                        <div style="background: rgba(194, 65, 12, 0.08); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--primary);">
+                            <p style="color: var(--text-secondary); font-style: italic; margin: 0;">
+                                <i class="fas fa-lightbulb" style="color: var(--accent); margin-right: 8px;"></i>
+                                ତାଙ୍କର ଏହି କୂଟନୈତିକ ବୁଦ୍ଧି ତାଙ୍କ ଆତ୍ମଜୀବନୀରେ ବର୍ଣ୍ଣିତ ଅଛି।
+                            </p>
+                        </div>
+                    </div>
+                    <div style="flex-shrink: 0;">
+                        <div style="background: var(--surface); padding: 2rem; border-radius: 16px; border: 1px solid var(--border); text-align: center; min-width: 200px;">
+                            <i class="fas fa-scroll" style="font-size: 3.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; font-weight: 500;">ପାନପତ୍ର ଡେମ୍ଫରେ ଗୁପ୍ତ ବାର୍ତ୍ତା</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Legacy Item 5: Autobiography and History -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ଐତିହ୍ୟ #୫</span>
+            <h2 class="section-title">ଆତ୍ମଜୀବନୀ ଏବଂ ଇତିହାସ</h2>
+            <p class="section-subtitle">
+                Autobiography and History
+            </p>
+        </div>
+
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="card" style="padding: 3rem; border: none; box-shadow: var(--shadow-md); background: linear-gradient(135deg, rgba(194, 65, 12, 0.03), rgba(245, 158, 11, 0.03));">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <i class="fas fa-book-open" style="font-size: 4rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
+                    <h3 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--primary); margin-bottom: 1rem;">
+                        ଆତ୍ମଜୀବନ ଚରିତ
+                    </h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">ଓଡ଼ିଆ ଭାଷାର ପ୍ରଥମ ପୂର୍ଣ୍ଣାଙ୍ଗ ଆତ୍ମଜୀବନୀ</p>
+                </div>
+                <p style="line-height: 2; color: var(--text-secondary); font-size: 1.05rem; text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                    ଏହା କେବଳ ଫକୀର ମୋହନଙ୍କ ଜୀବନ କାହାଣୀ ନୁହେଁ, ବରଂ ଏହା ହେଉଛି ୧୯ଶ ଶତାବ୍ଦୀର ଓଡ଼ିଶାର ଏକ ପ୍ରାମାଣିକ ସାମାଜିକ, ଅର୍ଥନୈତିକ ଏବଂ ରାଜନୈତିକ ଇତିହାସ।
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                    <div style="background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); text-align: center;">
+                        <i class="fas fa-rupee-sign" style="font-size: 2rem; color: var(--primary); margin-bottom: 0.75rem;"></i>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; font-weight: 500;">ଦାରିଦ୍ର୍ୟ</p>
+                    </div>
+                    <div style="background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); text-align: center;">
+                        <i class="fas fa-heart-broken" style="font-size: 2rem; color: var(--primary); margin-bottom: 0.75rem;"></i>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; font-weight: 500;">ପିତାମାତାଙ୍କ ବିୟୋଗ</p>
+                    </div>
+                    <div style="background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border); text-align: center;">
+                        <i class="fas fa-trophy" style="font-size: 2rem; color: var(--primary); margin-bottom: 0.75rem;"></i>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; font-weight: 500;">ସଫଳତା</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Legacy Item 6: Master of Colloquial Language -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ଐତିହ୍ୟ #୬</span>
+            <h2 class="section-title">ଶାବ୍ଦିକ ଯାଦୁକର</h2>
+            <p class="section-subtitle">
+                The Master of Colloquial Language
+            </p>
+        </div>
+
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="card" style="padding: 3rem; border: none; box-shadow: var(--shadow-md);">
+                <div style="display: flex; gap: 2.5rem; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem;">
+                            <i class="fas fa-magic" style="margin-right: 10px;"></i>
+                            ଖାଣ୍ଟି ଗାଉଁଲି ଓଡ଼ିଆ
+                        </h3>
+                        <p style="line-height: 2; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            ଫକୀର ମୋହନ ସଂସ୍କୃତ ମିଶ୍ରିତ କ୍ଲିଷ୍ଟ ଶବ୍ଦ ପରିବର୍ତ୍ତେ ଢଗଢମାଳି, ଲୋକକଥା ଏବଂ ଖାଣ୍ଟି ଗାଉଁଲି ଓଡ଼ିଆ ଶବ୍ଦର ପ୍ରୟୋଗ ସାହିତ୍ୟରେ କରିଥିଲେ।
+                        </p>
+                        <div style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(194, 65, 12, 0.1)); padding: 1.5rem; border-radius: 12px; border-left: 4px solid var(--accent);">
+                            <p style="color: var(--text-secondary); font-style: italic; margin: 0;">
+                                <i class="fas fa-smile" style="color: var(--accent); margin-right: 8px;"></i>
+                                ତାଙ୍କର ବ୍ୟଙ୍ଗ ଏତେ ଶାଣିତ ଥିଲା ଯେ ସେ ହସାଇ ହସାଇ ସମାଜର କୁସଂସ୍କାର ଉପରେ କଠୋର ପ୍ରହାର କରୁଥିଲେ।
+                            </p>
+                        </div>
+                    </div>
+                    <div style="flex-shrink: 0;">
+                        <div style="background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 2.5rem; border-radius: 20px; text-align: center;">
+                            <i class="fas fa-feather-alt" style="font-size: 4rem; margin-bottom: 1rem;"></i>
+                            <p style="font-size: 1.1rem; font-weight: 600;">ବ୍ୟଙ୍ଗ ସାମ୍ରାଜ୍ୟ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Summary Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ସାରାଂଶ</span>
+            <h2 class="section-title">ଏକାଧାରରେ ବହୁବିଦ୍ୟାବିଶାରଦ</h2>
+        </div>
+
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div class="card" style="padding: 3rem; border: none; box-shadow: var(--shadow-md); background: linear-gradient(135deg, rgba(194, 65, 12, 0.05), rgba(245, 158, 11, 0.05)); text-align: center;">
+                <p style="font-size: 1.2rem; line-height: 2; color: var(--text-secondary); margin-bottom: 2.5rem;">
+                    ଫକୀର ମୋହନ ଥିଲେ ଏକାଧାରରେ ଜଣେ ଭାଷାବିତ୍, ଦାର୍ଶନିକ, ସାମ୍ବାଦିକ, ପ୍ରଶାସକ ଏବଂ ଆଧୁନିକ ଓଡ଼ିଶାର ଜଣେ ପ୍ରକୃତ ନିର୍ମାତା।
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem;">
+                    <div style="padding: 1.5rem; background: var(--surface); border-radius: 16px; box-shadow: var(--shadow-sm);">
+                        <i class="fas fa-language" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 0.75rem;"></i>
+                        <p style="font-weight: 600; color: var(--text-primary);">ଭାଷାବିତ୍</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: var(--surface); border-radius: 16px; box-shadow: var(--shadow-sm);">
+                        <i class="fas fa-brain" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 0.75rem;"></i>
+                        <p style="font-weight: 600; color: var(--text-primary);">ଦାର୍ଶନିକ</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: var(--surface); border-radius: 16px; box-shadow: var(--shadow-sm);">
+                        <i class="fas fa-newspaper" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 0.75rem;"></i>
+                        <p style="font-weight: 600; color: var(--text-primary);">ସାମ୍ବାଦିକ</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: var(--surface); border-radius: 16px; box-shadow: var(--shadow-sm);">
+                        <i class="fas fa-user-tie" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 0.75rem;"></i>
+                        <p style="font-weight: 600; color: var(--text-primary);">ପ୍ରଶାସକ</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: var(--surface); border-radius: 16px; box-shadow: var(--shadow-sm);">
+                        <i class="fas fa-city" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 0.75rem;"></i>
+                        <p style="font-weight: 600; color: var(--text-primary);">ନିର୍ମାତା</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

@@ -1,70 +1,325 @@
 {% extends 'portal/base.html' %}
+{% load static %}
 
 {% block title %}ରଚନାବଳୀ - ମୋ ଫକୀର ମୋହନ{% endblock %}
 
 {% block content %}
-<section class="section">
-    <h2 class="section-title">ଫକୀର ମୋହନଙ୍କ ରଚନାବଳୀ</h2>
-    <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem;">
-        ଫକୀର ମୋହନ ସେନାପତି ଓଡ଼ିଆ ସାହିତ୍ୟର ବିଭିନ୍ନ ବିଧାରେ ଅବଦାନ ରଖିଥିଲେ | 
-        ତାଙ୍କ ରଚନାବଳୀ ମଧ୍ୟରେ ଉପନ୍ୟାସ, କ୍ଷୁଦ୍ର ଗଳ୍ପ, କବିତା, ଆତ୍ମଜୀବନୀ ଏବଂ ଅନୁବାଦ ଅନ୍ତର୍ଭୁକ୍ତ |
-    </p>
-
-    <div class="card-grid">
-        {% for article in articles %}
-        <div class="card">
-            {% if article.image %}
-                <img src="{{ article.image.url }}" alt="{{ article.title_odia }}" class="card-image">
-            {% endif %}
-            <div class="card-content">
-                <h3 class="card-title">{{ article.title_odia }}</h3>
-                <p class="card-text">{{ article.content_odia|truncatewords:40 }}</p>
-                <a href="{% url 'article_detail' article.slug %}" class="btn">ଅଧିକ ପଢ଼ନ୍ତୁ</a>
+<!-- Page Header -->
+<section class="hero" style="min-height: 50vh; padding: 4rem 0;">
+    <div class="hero-container" style="text-align: center;">
+        <div class="hero-content" style="text-align: center; width: 100%;">
+            <div class="hero-badge">
+                <i class="fas fa-pen-fancy"></i>
+                ରଚନାବଳୀ
             </div>
+            <h1 style="font-size: 2.5rem;">ଫକୀର ମୋହନଙ୍କ <span>ସାହିତ୍ୟ ସୃଷ୍ଟି</span></h1>
+            <p class="hero-description" style="max-width: 700px; margin: 0 auto;">
+                ଓଡ଼ିଆ ସାହିତ୍ୟର ଜନକଙ୍କ ଅମର ସୃଷ୍ଟି ସମୂହ
+            </p>
         </div>
-        {% empty %}
-        <div class="card" style="padding: 30px; text-align: center;">
-            <p>ବର୍ତ୍ତମାନ କୌଣସି ରଚନାବଳୀ ଉପଲବ୍ଧ ନାହିଁ |</p>
-        </div>
-        {% endfor %}
     </div>
 </section>
 
+<!-- Novels Section -->
 <section class="section">
-    <h2 class="section-title">ପ୍ରମୁଖ ରଚନା</h2>
-    <div style="max-width: 900px; margin: 0 auto;">
-        <div class="card" style="padding: 25px; margin-bottom: 20px;">
-            <h3 style="color: var(--primary-color); margin-bottom: 15px;">ଛମାଣ ଆଠଗୁଣ୍ଠ</h3>
-            <p style="line-height: 1.8;">
-                ଏହା ଓଡ଼ିଆ ସାହିତ୍ୟର ପ୍ରଥମ ଉପନ୍ୟାସ | ଏହି ଗ୍ରନ୍ଥରେ ଫକୀର ମୋହନ ସେନାପତି 
-                ସେତେବେଳର ସମାଜ ବ୍ୟବସ୍ଥା, ଜମିଦାରୀ ପ୍ରଥା ଏବଂ ଚାଷୀମାନଙ୍କ ଦୁର୍ଦ୍ଦଶାକୁ 
-                ଅତି ସୁନ୍ଦର ଭାବରେ ଚିତ୍ରିତ କରିଛନ୍ତି |
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ଉପନ୍ୟାସ</span>
+            <h2 class="section-title">ଚାରୋଟି ମହାନ ଉପନ୍ୟାସ</h2>
+            <p class="section-subtitle">
+                ଫକୀର ମୋହନଙ୍କ ଚାରୋଟି ଉପନ୍ୟାସ ଓଡ଼ିଆ ସାହିତ୍ୟର ଚାରୋଟି ସ୍ତମ୍ଭ ସଦୃଶ
             </p>
         </div>
 
-        <div class="card" style="padding: 25px; margin-bottom: 20px;">
-            <h3 style="color: var(--primary-color); margin-bottom: 15px;">ମାମୁଁ</h3>
-            <p style="line-height: 1.8;">
-                ଏହା ଫକୀର ମୋହନଙ୍କ ରଚିତ ଏକ ବିଶିଷ୍ଟ ଉପନ୍ୟାସ | ଏଥିରେ ସେ ସମାଜର 
-                ବିଭିନ୍ନ ସମସ୍ୟା ଏବଂ କୁସଂସ୍କାରକୁ ଉପସ୍ଥାପନ କରିଛନ୍ତି |
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-category">୧୮୯୭</span>
+                    <h3 class="card-title">ଛ ମାଣ ଆଠ ଗୁଣ୍ଠ</h3>
+                    <p class="card-text">
+                        ବିଶ୍ୱ ସାହିତ୍ୟର ଏକ କାଳଜୟୀ କୃତି। ଜମିଦାର ରାମଚନ୍ଦ୍ର ମଙ୍ଗରାଜଙ୍କ ଶୋଷଣ ଏବଂ ନିରୀହ ଭଗିଆ ଓ ସାରିଆଙ୍କ କରୁଣ କାହାଣୀ। 'ଚମ୍ପା' ଚରିତ୍ରଟି ଓଡ଼ିଆ ସାହିତ୍ୟର ସବୁଠାରୁ ଚତୁର ଖଳନାୟିକା।
+                    </p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+                        <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500;">ସାମାଜିକ</span>
+                        <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500;">ବ୍ୟଙ୍ଗ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-category">୧୯୦୧</span>
+                    <h3 class="card-title">ଲଛମା</h3>
+                    <p class="card-text">
+                        ଐତିହାସିକ ପୃଷ୍ଠଭୂମି ଉପରେ ଆଧାରିତ। ୧୮ଶ ଶତାବ୍ଦୀରେ ଓଡ଼ିଶାରେ 'ବର୍ଗୀ' (ମରହଟ୍ଟା) ମାନଙ୍କ ଆକ୍ରମଣ ଓ ଲୁଟ୍‌ତରାଜ ସମୟର ଚିତ୍ର। ନାୟିକା ଲଛମାର ସାହସିକତା ଏହାର ମୁଖ୍ୟ ଆକର୍ଷଣ।
+                    </p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+                        <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500;">ଐତିହାସିକ</span>
+                        <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500;">ସାହସିକତା</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-category">୧୯୧୩</span>
+                    <h3 class="card-title">ମାମୁଁ</h3>
+                    <p class="card-text">
+                        ଜଣେ ସ୍ୱାର୍ଥପର ସରକାରୀ କର୍ମଚାରୀ 'ନାଜର ନଟବର ଦାସ'ଙ୍କ ଚରିତ୍ର ମାଧ୍ୟମରେ ସମାଜର କପଟତାକୁ ଦେଖାଯାଇଛି। ଭଉଣୀର ସମ୍ପତ୍ତି ହଡ଼ପ କରିବା ପାଇଁ ମାମୁଁର ଚକ୍ରାନ୍ତ ଏହାର ମୂଳ କଥାବସ୍ତୁ।
+                    </p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+                        <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500;">ବ୍ୟଙ୍ଗ</span>
+                        <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500;">ସାମାଜିକ</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-category">୧୯୧୫</span>
+                    <h3 class="card-title">ପ୍ରାୟଶ୍ଚିତ</h3>
+                    <p class="card-text">
+                        ଆଧୁନିକ ଶିକ୍ଷା ଓ ପାରମ୍ପରିକ ମୂଲ୍ୟବୋଧ ମଧ୍ୟରେ ସଂଘର୍ଷକୁ ଦର୍ଶାଏ। ନାୟକ ଗୋବିନ୍ଦଚନ୍ଦ୍ରଙ୍କ ଭୁଲ ନିଷ୍ପତ୍ତି ଏବଂ ପରବର୍ତ୍ତୀ ସମୟରେ ତାଙ୍କର ଅନୁଶୋଚନାକୁ ନେଇ ଏହି ରଚନା।
+                    </p>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+                        <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500;">ଦାର୍ଶନିକ</span>
+                        <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 500;">ସଂଘର୍ଷ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Short Stories Section -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">କ୍ଷୁଦ୍ର ଗଳ୍ପ</span>
+            <h2 class="section-title">ଗଳ୍ପ ସ୍ୱଳ୍ପ</h2>
+            <p class="section-subtitle">
+                ମୋଟ ୨୧ଟି ଗଳ୍ପ, ଯାହା 'ଗଳ୍ପ ସ୍ୱଳ୍ପ' (ଦୁଇ ଭାଗ) ନାମରେ ପ୍ରକାଶିତ
             </p>
         </div>
 
-        <div class="card" style="padding: 25px; margin-bottom: 20px;">
-            <h3 style="color: var(--primary-color); margin-bottom: 15px;">ଆତ୍ମଜୀବନୀ</h3>
-            <p style="line-height: 1.8;">
-                ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଆତ୍ମଜୀବନୀ ତାଙ୍କ ଜୀବନର ବିଭିନ୍ନ ଘଟଣା ଏବଂ 
-                ଅଭିଜ୍ଞତାକୁ ବର୍ଣ୍ଣନା କରେ | ଏହା ଓଡ଼ିଆ ସାହିତ୍ୟରେ ଏକ ଗୁରୁତ୍ୱପୂର୍ଣ୍ଣ ସ୍ଥାନ ଅଧିକାର କରିଛି |
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="book-card" style="margin-bottom: 1.5rem;">
+                <div class="book-icon" style="background: linear-gradient(135deg, #c2410c, #ea580c);">
+                    <i class="fas fa-feather-alt"></i>
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">ରେବତୀ</h3>
+                    <p class="book-title-en">Revati (୧୮୯୮)</p>
+                    <p class="book-description">
+                        ଓଡ଼ିଶାରେ ନାରୀ ଶିକ୍ଷାର ପ୍ରଥମ ପଦକ୍ଷେପ ଓ ସେଥିପାଇଁ ସମାଜର ରକ୍ଷଣଶୀଳ ମନୋଭାବର କରୁଣ ପରିଣତି ଏଥିରେ ଦେଖିବାକୁ ମିଳେ। ଏହା ଆଧୁନିକ ଓଡ଼ିଆ ସାହିତ୍ୟର ପ୍ରଥମ କ୍ଷୁଦ୍ରଗଳ୍ପ।
+                    </p>
+                </div>
+            </div>
+
+            <div class="book-card" style="margin-bottom: 1.5rem;">
+                <div class="book-icon" style="background: linear-gradient(135deg, #c2410c, #ea580c);">
+                    <i class="fas fa-feather-alt"></i>
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">ଡାକ ମୁନ୍‌ସୀ</h3>
+                    <p class="book-title-en">Dak Munshi</p>
+                    <p class="book-description">
+                        ପାଶ୍ଚାତ୍ୟ ଶିକ୍ଷାରେ ଶିକ୍ଷିତ ପୁଅ (ଗୋପାଳ) କିପରି ନିଜର ଅଶିକ୍ଷିତ ବାପାଙ୍କୁ ଅପମାନିତ କରୁଛି, ତାହା ବର୍ଣ୍ଣିତ। ପାରମ୍ପରିକ ମୂଲ୍ୟବୋଧ ଓ ଆଧୁନିକ ଶିକ୍ଷାର ସଂଘର୍ଷ।
+                    </p>
+                </div>
+            </div>
+
+            <div class="book-card" style="margin-bottom: 1.5rem;">
+                <div class="book-icon" style="background: linear-gradient(135deg, #c2410c, #ea580c);">
+                    <i class="fas fa-feather-alt"></i>
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">ପେଟେଣ୍ଟ ମେଡ଼ିସିନ୍</h3>
+                    <p class="book-title-en">Patent Medicine</p>
+                    <p class="book-description">
+                        ମଦ୍ୟପାନ ଓ ବାବୁ ସଂସ୍କୃତି ଉପରେ ଏହା ଏକ ପ୍ରଭାବଶାଳୀ ବ୍ୟଙ୍ଗ ଗଳ୍ପ। ଚନ୍ଦ୍ରମଣି ପଟ୍ଟନାୟକ ଓ ସୁଲୋଚନା ଦେଇଙ୍କ ଚରିତ୍ର ଅତି ଜୀବନ୍ତ।
+                    </p>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-icon" style="background: linear-gradient(135deg, #c2410c, #ea580c);">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="book-info">
+                    <h3 class="book-title">ଅନ୍ୟାନ୍ୟ ଗଳ୍ପ</h3>
+                    <p class="book-title-en">Other Stories</p>
+                    <p class="book-description">
+                        ମୋଟ ୨୧ଟି ଗଳ୍ପ ମଧ୍ୟରୁ ଅନ୍ୟାନ୍ୟ ଗଳ୍ପଗୁଡ଼ିକ ହେଲା: ଅତିତ ପଟେ, ସୁଭଦ୍ରା, ଦରୋଗା ଜନାର୍ଦ୍ଦନ ବାବୁ, ପୁଅଟିଏ ହେଲା, ସଂସ୍କାର, ଲେଖକ, ଚାକିରି, ମା'ଙ୍କ ଆଦେଶ, ପୁଣ୍ୟତୀର୍ଥ, ଚିଠି, ବାଟି, ନୂଆ ବୋହୂ, ଜନ୍ମଭୂମି, ଦେଶଭକ୍ତ, ସ୍ୱଦେଶୀ ରାଜା, ଉତ୍କଳ ଭ୍ରମଣ, ଓ ଅନ୍ୟାନ୍ୟ।
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Poetry Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">କାବ୍ୟ ଓ କବିତା</span>
+            <h2 class="section-title">କବିତା ସଂଗ୍ରହ</h2>
+            <p class="section-subtitle">
+                ଫକୀର ମୋହନ ଜଣେ ଗଦ୍ୟ ଶିଳ୍ପୀ ହେବା ସହ ଜଣେ ସୁଦକ୍ଷ କବି ମଧ୍ୟ ଥିଲେ
             </p>
         </div>
 
-        <div class="card" style="padding: 25px; margin-bottom: 20px;">
-            <h3 style="color: var(--primary-color); margin-bottom: 15px;">କ୍ଷୁଦ୍ର ଗଳ୍ପ ସମଗ୍ର</h3>
-            <p style="line-height: 1.8;">
-                ଫକୀର ମୋହନ ଓଡ଼ିଆରେ କ୍ଷୁଦ୍ର ଗଳ୍ପ ବିଧାର ପ୍ରବର୍ତ୍ତନ କରିଥିଲେ | 
-                ତାଙ୍କ ରଚିତ ଅନେକ ଗୁଡ଼ିଏ କ୍ଷୁଦ୍ର ଗଳ୍ପ ମଧ୍ୟରେ "ଧୋବୀ", "ସୁବୋଧ ବାଳକ", 
-                "ଅଦେଖା ଚିଠି" ଇତ୍ୟାଦି ଅନ୍ୟତମ |
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-scroll"></i>
+                </div>
+                <h3 class="feature-title">ଉତ୍କଳ ଭ୍ରମଣ</h3>
+                <p class="feature-text">
+                    ଓଡ଼ିଆ ସାହିତ୍ୟର ଏକ ଅନନ୍ୟ ବ୍ୟଙ୍ଗ କାବ୍ୟ। ଓଡ଼ିଶାର ବିଭିନ୍ନ ସ୍ଥାନ ଭ୍ରମଣ କରିବା ସମୟରେ ସେଠାକାର ବଡ଼ ବଡ଼ ବ୍ୟକ୍ତି ଓ ସମାଜର ଦୋଷ ଦୁର୍ବଳତାକୁ ଅତି ସୁନ୍ଦର ଭାବେ ବର୍ଣ୍ଣନା।
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-praying-hands"></i>
+                </div>
+                <h3 class="feature-title">ଅବସର ବାସରେ</h3>
+                <p class="feature-text">
+                    ଜୀବନର ଅନ୍ତିମ ପର୍ଯ୍ୟାୟରେ ଲେଖାଯାଇଥିବା ଭକ୍ତି ଓ ଆଧ୍ୟାତ୍ମିକ କବିତାଗୁଡ଼ିକ ଏଥିରେ ସ୍ଥାନ ପାଇଛି।
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-pen-fancy"></i>
+                </div>
+                <h3 class="feature-title">କବିତା କଳ୍ପ</h3>
+                <p class="feature-text">
+                    ତାଙ୍କର ଏକ ପ୍ରସିଦ୍ଧ କବିତା ସଂଗ୍ରହ। ବିଭିନ୍ନ ବିଷୟ ଓ ଭାବନାକୁ ନେଇ ରଚିତ କବିତାମାଳା।
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Translations Section -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ଅନୁବାଦ</span>
+            <h2 class="section-title">ଅନୁବାଦ ସାହିତ୍ୟ</h2>
+            <p class="section-subtitle">
+                ସଂସ୍କୃତ ମହାକାବ୍ୟକୁ ଓଡ଼ିଆରେ ଅନୁବାଦ
             </p>
+        </div>
+
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="card" style="padding: 2.5rem; border: none; box-shadow: var(--shadow-md); margin-bottom: 2rem;">
+                <div style="display: flex; align-items: flex-start; gap: 2rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--primary); margin-bottom: 1.5rem;">
+                            <i class="fas fa-language" style="margin-right: 10px;"></i>
+                            ମହାକାବ୍ୟ ଅନୁବାଦ
+                        </h3>
+                        <p style="line-height: 2; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            ସେ ନିଜ ଜୀବନର ଅଧିକାଂଶ ସମୟ ସଂସ୍କୃତ ମହାକାବ୍ୟକୁ ଓଡ଼ିଆରେ ଅନୁବାଦ କରିବାରେ ବିତାଇଥିଲେ।
+                            ସେ ରାମାୟଣ, ମହାଭାରତ, ଉପନିଷଦ ଏବଂ ହରିବଂଶ ଭଳି ଗ୍ରନ୍ଥକୁ ଅତି ସରଳ ଓଡ଼ିଆରେ ଅନୁବାଦ କରିଥିଲେ।
+                        </p>
+                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                            <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">ରାମାୟଣ</span>
+                            <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">ମହାଭାରତ</span>
+                            <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">ଉପନିଷଦ</span>
+                            <span style="background: rgba(194, 65, 12, 0.1); color: var(--primary); padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; font-weight: 500;">ହରିବଂଶ</span>
+                        </div>
+                    </div>
+                    <div style="flex-shrink: 0;">
+                        <div style="background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; padding: 2rem; border-radius: 16px; text-align: center; min-width: 200px;">
+                            <i class="fas fa-award" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 0.5rem;">ସମ୍ମାନ</h4>
+                            <p style="font-size: 0.95rem; opacity: 0.95;">'ସରସ୍ୱତୀ' ଓ 'ବ୍ୟାସକବି' ଉପାଧିରେ ସମ୍ମାନିତ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Autobiography Section -->
+<section class="section">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ଆତ୍ମଜୀବନୀ</span>
+            <h2 class="section-title">ଆତ୍ମଜୀବନ ଚରିତ</h2>
+            <p class="section-subtitle">
+                ଓଡ଼ିଆ ଭାଷାରେ ଲିଖିତ ପ୍ରଥମ ପୂର୍ଣ୍ଣାଙ୍ଗ ଆତ୍ମଜୀବନୀ
+            </p>
+        </div>
+
+        <div style="max-width: 900px; margin: 0 auto;">
+            <div class="card" style="padding: 3rem; border: none; box-shadow: var(--shadow-md); background: linear-gradient(135deg, rgba(194, 65, 12, 0.03), rgba(245, 158, 11, 0.03));">
+                <div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <h3 style="font-family: var(--font-heading); font-size: 1.8rem; color: var(--primary); margin-bottom: 1.5rem;">
+                            <i class="fas fa-user-edit" style="margin-right: 10px;"></i>
+                            ଆତ୍ମଜୀବନ ଚରିତ (୧୯୨୭)
+                        </h3>
+                        <p style="line-height: 2; color: var(--text-secondary); font-size: 1.05rem;">
+                            ଏହା ଓଡ଼ିଆ ଭାଷାରେ ଲିଖିତ ପ୍ରଥମ ପୂର୍ଣ୍ଣାଙ୍ଗ ଆତ୍ମଜୀବନୀ। ଏଥିରେ ତାଙ୍କ ଜୀବନର ସଂଘର୍ଷ, ବାଲେଶ୍ୱରରେ ଛାପାଖାନା ପ୍ରତିଷ୍ଠା, କେନ୍ଦୁଝର ପ୍ରଜା ବିଦ୍ରୋହ ଓ ଓଡ଼ିଆ ଭାଷା ସୁରକ୍ଷା ଆନ୍ଦୋଳନର ଇତିହାସ ବିସ୍ତୃତ ଭାବେ ରହିଛି।
+                        </p>
+                        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+                            <h4 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.1rem;">ମୁଖ୍ୟ ବିଷୟବସ୍ତୁ:</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="padding: 8px 0; color: var(--text-secondary);"><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i>ଜୀବନର ସଂଘର୍ଷ କାହାଣୀ</li>
+                                <li style="padding: 8px 0; color: var(--text-secondary);"><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i>ବାଲେଶ୍ୱରରେ ଛାପାଖାନା ପ୍ରତିଷ୍ଠା</li>
+                                <li style="padding: 8px 0; color: var(--text-secondary);"><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i>କେନ୍ଦୁଝର ପ୍ରଜା ବିଦ୍ରୋହ</li>
+                                <li style="padding: 8px 0; color: var(--text-secondary);"><i class="fas fa-check" style="color: var(--primary); margin-right: 10px;"></i>ଓଡ଼ିଆ ଭାଷା ସୁରକ୍ଷା ଆନ୍ଦୋଳନ</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="flex-shrink: 0;">
+                        <div style="background: var(--surface); padding: 2rem; border-radius: 16px; border: 1px solid var(--border); text-align: center;">
+                            <i class="fas fa-book" style="font-size: 4rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">ପ୍ରକାଶିତ: ୧୯୨୭</p>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">ପୁତ୍ର ମୋହିନୀ ମୋହନଙ୍କ ଦ୍ୱାରା</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Summary Section -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">ସାରାଂଶ</span>
+            <h2 class="section-title">ସାହିତ୍ୟିକ ଅବଦାନର ସାରାଂଶ</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+            <div style="text-align: center; padding: 2rem; background: var(--surface); border-radius: 16px; border: 1px solid var(--border);">
+                <div style="font-size: 3rem; color: var(--primary); font-weight: 700; margin-bottom: 0.5rem;">୪</div>
+                <p style="color: var(--text-secondary); font-weight: 500;">ଉପନ୍ୟାସ</p>
+            </div>
+            <div style="text-align: center; padding: 2rem; background: var(--surface); border-radius: 16px; border: 1px solid var(--border);">
+                <div style="font-size: 3rem; color: var(--primary); font-weight: 700; margin-bottom: 0.5rem;">୨୧</div>
+                <p style="color: var(--text-secondary); font-weight: 500;">କ୍ଷୁଦ୍ର ଗଳ୍ପ</p>
+            </div>
+            <div style="text-align: center; padding: 2rem; background: var(--surface); border-radius: 16px; border: 1px solid var(--border);">
+                <div style="font-size: 3rem; color: var(--primary); font-weight: 700; margin-bottom: 0.5rem;">୩</div>
+                <p style="color: var(--text-secondary); font-weight: 500;">କାବ୍ୟ ସଂଗ୍ରହ</p>
+            </div>
+            <div style="text-align: center; padding: 2rem; background: var(--surface); border-radius: 16px; border: 1px solid var(--border);">
+                <div style="font-size: 3rem; color: var(--primary); font-weight: 700; margin-bottom: 0.5rem;">୪+</div>
+                <p style="color: var(--text-secondary); font-weight: 500;">ମହାକାବ୍ୟ ଅନୁବାଦ</p>
+            </div>
+            <div style="text-align: center; padding: 2rem; background: var(--surface); border-radius: 16px; border: 1px solid var(--border);">
+                <div style="font-size: 3rem; color: var(--primary); font-weight: 700; margin-bottom: 0.5rem;">୧</div>
+                <p style="color: var(--text-secondary); font-weight: 500;">ଆତ୍ମଜୀବନୀ</p>
+            </div>
         </div>
     </div>
 </section>
