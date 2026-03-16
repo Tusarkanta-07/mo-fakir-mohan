@@ -10,6 +10,39 @@
         <strong>ଦ୍ରଷ୍ଟବ୍ୟ:</strong> ଦଲିଲ ଡାଉନଲୋଡ୍ କରିବା ପାଇଁ ଲଗଇନ୍ ଆବଶ୍ୟକ |
     </p>
 
+    <!-- Research Papers Section -->
+    <div style="margin: 40px 0; padding: 30px; background: #f5f5f5; border-radius: 10px;">
+        <h3 style="text-align: center; margin-bottom: 25px; color: #1a1a1a;">📑 ଗବେଷଣା ପତ୍ର | Research Papers</h3>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto;">
+            
+            <!-- Research Paper 1 -->
+            <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <h4 style="color: #2c3e50; margin-bottom: 10px;">ସାମାଜିକ ଦୃଷ୍ଟିକୋଣ ଓ ବାସ୍ତବବାଦ</h4>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Literary Realism and Narrative Techniques in Fakir Mohan Senapati's Six Acres and a Third</p>
+                <p style="font-size: 0.85rem; color: #555; margin-bottom: 15px;">'ଛ ମାଣ ଆଠ ଗୁଣ୍ଠ'ରେ ଥିବା ସାମାଜିକ ବାସ୍ତବତା, ଶୋଷଣ ଏବଂ ତାଙ୍କର ଅନନ୍ୟ ବର୍ଣ୍ଣନା ଶୈଳୀ ଉପରେ ଗବେଷଣା |</p>
+                <a href="https://ijels.com/upload_document/issue_files/22IJELS-101202152-Literary.pdf" target="_blank" class="btn" style="display: inline-block; width: 100%; text-align: center;">ପଢ଼ନ୍ତୁ | Read</a>
+            </div>
+
+            <!-- Research Paper 2 -->
+            <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <h4 style="color: #2c3e50; margin-bottom: 10px;">ନାରୀ ସଶକ୍ତିକରଣ ଓ ଶିକ୍ଷା</h4>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Education, Empowerment and Eros: Fakir Mohan Senapati's Rebati</p>
+                <p style="font-size: 0.85rem; color: #555; margin-bottom: 15px;">'ରେବତୀ' ଗଳ୍ପ ମାଧ୍ୟମରେ ଔପନିବେଶିକ ଓଡ଼ିଶାରେ ନାରୀ ଶିକ୍ଷାର ସ୍ଥିତି ଏବଂ ପିତୃସତ୍ତାତ୍ମକ ସମାଜର ମାନସିକତା ଉପରେ ବିଶ୍ଳେଷଣ |</p>
+                <a href="https://media.neliti.com/media/publications/566630-education-empowerment-and-eros-fakir-moh-9988f6b7.pdf" target="_blank" class="btn" style="display: inline-block; width: 100%; text-align: center;">ପଢ଼ନ୍ତୁ | Read</a>
+            </div>
+
+            <!-- Research Paper 3 -->
+            <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <h4 style="color: #2c3e50; margin-bottom: 10px;">ଉପନିବେଶବାଦ ଓ ପ୍ରତିରୋଧ</h4>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Subaltern Struggles and Feminist Voices: A Comparative Study</p>
+                <p style="font-size: 0.85rem; color: #555; margin-bottom: 15px;">ଫକୀର ମୋହନଙ୍କ ରଚନାରେ ନିମ୍ନ ବର୍ଗର ଲୋକଙ୍କ ସଂଘର୍ଷ (Subaltern studies) ଏବଂ ନାରୀବାଦୀ ସ୍ୱର ଉପରେ ଏକ ଗବେଷଣା |</p>
+                <a href="https://rupkatha.com/V12/n4/v12n407.pdf" target="_blank" class="btn" style="display: inline-block; width: 100%; text-align: center;">ପଢ଼ନ୍ତୁ | Read</a>
+            </div>
+
+        </div>
+    </div>
+
     {% if categories %}
     <div style="text-align: center; margin-bottom: 30px;">
         <a href="{% url 'documents' %}" class="btn" style="margin: 5px;">ସମସ୍ତ</a>
@@ -42,10 +75,6 @@
         </li>
         {% endfor %}
     </ul>
-    {% else %}
-    <div class="card" style="padding: 40px; text-align: center;">
-        <p style="font-size: 1.1rem;">ବର୍ତ୍ତମାନ କୌଣସି ଦଲିଲ ଉପଲବ୍ଧ ନାହିଁ |</p>
-    </div>
     {% endif %}
 </section>
 

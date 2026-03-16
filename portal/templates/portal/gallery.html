@@ -1,4 +1,5 @@
 {% extends 'portal/base.html' %}
+{% load static %}
 
 {% block title %}ଚିତ୍ରଶାଳା - ମୋ ଫକୀର ମୋହନ{% endblock %}
 
@@ -7,23 +8,35 @@
     <h2 class="section-title">ଚିତ୍ରଶାଳା</h2>
     <p class="section-description">ଫକୀର ମୋହନ ସେନାପତିଙ୍କ ଜୀବନ ଏବଂ କାର୍ଯ୍ୟର ବିଭିନ୍ନ ଚିତ୍ର</p>
 
+    <!-- Featured Photo of Fakir Mohan Senapati -->
     <div class="gallery-grid">
+        <!-- Main Fakir Mohan Photo -->
+        <div class="gallery-item featured">
+            <a href="{% static 'images/fakir-mohan-senapati.jpg' %}" target="_blank">
+                <img src="{% static 'images/fakir-mohan-senapati.jpg' %}" alt="ଫକୀର ମୋହନ ସେନାପତି">
+            </a>
+            <div class="gallery-caption">
+                <h4>ଫକୀର ମୋହନ ସେନାପତି</h4>
+                <p>୧୮୪୩ - ୧୯୨୦ | ବ୍ୟାସ କବି</p>
+            </div>
+        </div>
+
         {% for image in images %}
         <div class="gallery-item">
             <a href="{{ image.image.url }}" target="_blank">
                 <img src="{{ image.image.url }}" alt="{{ image.title_odia }}">
             </a>
             {% if image.title_odia %}
-            <div class="gallery-caption">
-                <h4>{{ image.title_odia }}</h4>
-                {% if image.description_odia %}
-                <p>{{ image.description_odia|truncatewords:15 }}</p>
-                {% endif %}
+            <div class="gallery-overlay">
+                <div class="gallery-caption">
+                    <h4>{{ image.title_odia }}</h4>
+                    {% if image.description_odia %}
+                    <p>{{ image.description_odia|truncatewords:15 }}</p>
+                    {% endif %}
+                </div>
             </div>
             {% endif %}
         </div>
-        {% empty %}
-        <p class="no-content">ବର୍ତ୍ତମାନ କୌଣସି ଛବି ନାହିଁ |</p>
         {% endfor %}
     </div>
 </section>
