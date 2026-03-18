@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: mo-fakir-mohan
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn mo_fakir_mohan.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: DJANGO_SETTINGS_MODULE
+        value: mo_fakir_mohan.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: false
+      - key: ALLOWED_HOSTS
+        sync: false
+      - key: STATIC_ROOT
+        value: /opt/render/project/src/staticfiles
+      - key: MEDIA_ROOT
+        value: /opt/render/project/src/media
+    disk:
+      name: media-data
+      mountPath: /opt/render/project/src/media
+      sizeGB: 1
