@@ -66,7 +66,7 @@ Create a production settings file or set environment variables. We'll use enviro
 # Set environment variables for production
 export SECRET_KEY='your-secret-key-here-generate-a-new-one'
 export DEBUG=False
-export ALLOWED_HOSTS=yourusername.pythonanywhere.com
+export ALLOWED_HOSTS=Tusar.pythonanywhere.com
 ```
 
 **Generate a new secret key:**
@@ -84,7 +84,7 @@ python -c "from django.core.management.utils import get_random_secret_key; print
 2. Click **"Add a new web app"**
 3. Select **"Manual configuration"** (not the Django wizard)
 4. Choose **Python 3.10**
-5. Enter your domain: `yourusername.pythonanywhere.com`
+5. Enter your domain: `Tusar.pythonanywhere.com`
 
 After creating the web app:
 
@@ -97,7 +97,7 @@ import os
 import sys
 
 # Add your project directory to the sys.path
-project_home = '/home/yourusername/mo-fakir-mohan'
+project_home = '/home/Tusar/mo-fakir-mohan'
 if project_home not in sys.path:
     sys.path.insert(0, project_home)
 
@@ -105,7 +105,7 @@ if project_home not in sys.path:
 os.environ['DJANGO_SETTINGS_MODULE'] = 'mo_fakir_mohan.settings'
 os.environ['SECRET_KEY'] = 'your-secret-key-here'
 os.environ['DEBUG'] = 'False'
-os.environ['ALLOWED_HOSTS'] = 'yourusername.pythonanywhere.com'
+os.environ['ALLOWED_HOSTS'] = 'Tusar.pythonanywhere.com'
 
 # Serve static files and run Django WSGI application
 from django.core.wsgi import get_wsgi_application
@@ -121,20 +121,20 @@ application = get_wsgi_application()
 In the **Web** tab, configure these settings:
 
 ### Source Code
-- **Source code:** `/home/yourusername/mo-fakir-mohan`
-- **Working directory:** `/home/yourusername/mo-fakir-mohan`
+- **Source code:** `/home/Tusar/mo-fakir-mohan`
+- **Working directory:** `/home/Tusar/mo-fakir-mohan`
 
 ### Virtual Environment
-- **Virtualenv:** `/home/yourusername/.virtualenvs/mo-fakir-mohan-env`
+- **Virtualenv:** `/home/Tusar/.virtualenvs/mo-fakir-mohan-env`
 
 ### Static Files
 Add these static file mappings:
 
 | URL | Directory |
 |-----|-----------|
-| `/static/` | `/home/yourusername/mo-fakir-mohan/staticfiles/` |
-| `/media/` | `/home/yourusername/mo-fakir-mohan/media/` |
-| `/books/` | `/home/yourusername/mo-fakir-mohan/books/` |
+| `/static/` | `/home/Tusar/mo-fakir-mohan/staticfiles/` |
+| `/media/` | `/home/Tusar/mo-fakir-mohan/media/` |
+| `/books/` | `/home/Tusar/mo-fakir-mohan/books/` |
 
 ---
 
@@ -152,7 +152,7 @@ cd ~/mo-fakir-mohan
 # Set environment variables temporarily for this command
 export SECRET_KEY='your-secret-key-here'
 export DEBUG=False
-export ALLOWED_HOSTS=yourusername.pythonanywhere.com
+export ALLOWED_HOSTS=Tusar.pythonanywhere.com
 
 # Collect static files
 python manage.py collectstatic --noinput
@@ -195,15 +195,15 @@ chmod -R 755 ~/mo-fakir-mohan/books
 
 ## Step 12: Test Your Website
 
-Visit: `https://yourusername.pythonanywhere.com`
+Visit: `https://Tusar.pythonanywhere.com`
 
 You should see your Mo Fakir Mohan website live!
 
 Test these URLs:
-- Homepage: `https://yourusername.pythonanywhere.com/`
-- Admin: `https://yourusername.pythonanywhere.com/admin/`
-- Books: `https://yourusername.pythonanywhere.com/books/`
-- Gallery: `https://yourusername.pythonanywhere.com/gallery/`
+- Homepage: `https://Tusar.pythonanywhere.com/`
+- Admin: `https://Tusar.pythonanywhere.com/admin/`
+- Books: `https://Tusar.pythonanywhere.com/books/`
+- Gallery: `https://Tusar.pythonanywhere.com/gallery/`
 
 ---
 
@@ -220,7 +220,7 @@ Add these lines:
 ```bash
 export SECRET_KEY='your-secret-key-here'
 export DEBUG=False
-export ALLOWED_HOSTS=yourusername.pythonanywhere.com
+export ALLOWED_HOSTS=Tusar.pythonanywhere.com
 ```
 
 Save and exit (Ctrl+X, then Y, then Enter).
@@ -255,7 +255,7 @@ Add this to your static files mapping in Web tab:
   ```bash
   python -c "import django; print(django.__path__[0])"
   ```
-  Then add: `/home/yourusername/.virtualenvs/mo-fakir-mohan-env/lib/python3.10/site-packages/django/contrib/admin/static/admin/`
+  Then add: `/home/Tusar/.virtualenvs/mo-fakir-mohan-env/lib/python3.10/site-packages/django/contrib/admin/static/admin/`
 
 ---
 
